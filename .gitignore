@@ -5,3 +5,39 @@
 /.idea/dataSources/3ba44306-7215-47c9-ba74-4942cb5c416c/storage_v2/_src_/schema/performance_schema.kIw0nw.meta
 /.idea/dataSources/3ba44306-7215-47c9-ba74-4942cb5c416c/storage_v2/_src_/schema/sys.zb4BAA.meta
 /.idea/workspace.xml
+
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+/idea/
+
+### VS Code ###
+.vscode/
+
