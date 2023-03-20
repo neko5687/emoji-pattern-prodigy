@@ -7,7 +7,6 @@ interface MatrixDTO {
   votes: number,
   difficulty: number,
   createdAt: String,
-  creator: String
 }
 
 interface Matrix {
@@ -16,7 +15,6 @@ interface Matrix {
   votes: number,
   difficulty: String,
   createdAt: String,
-  creator: String
 }
 
 
@@ -26,13 +24,15 @@ interface Matrix {
   styleUrls: ['./matrices.component.css']
 })
 export class MatricesComponent implements OnInit {
-  matrices: MatrixDTO[] = [];
+  matrices: Matrix[] = [];
 
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
-    this.http.get<MatrixDTO[]>("http://localhost:8080/api/matrices").subscribe(result => this.matrices = result);
+    this.http.get<MatrixDTO[]>("http://localhost:8080/api/matrices")
+      .subscribe(result => {this.matrices = result.map(dto => this.convertDTOtoMatrix(dto))});
+    console.log("hallo" + this.matrices[0])
   }
 
   convertDTOtoMatrix(matrixDto: MatrixDTO): Matrix {
@@ -42,7 +42,6 @@ export class MatricesComponent implements OnInit {
       votes: matrixDto.votes,
       difficulty: "🌶️".repeat(matrixDto.difficulty),
       createdAt: matrixDto.createdAt,
-      creator: matrixDto.creator
     };
     return matrix;
   }
