@@ -5,6 +5,7 @@ import {MatricesComponent} from "./matrices/matrices.component";
 import {LoginComponent} from "./login/login.component";
 import {AlgorithmicThinkingComponent} from "./algorithmic-thinking/algorithmic-thinking.component";
 import {AboutComponent} from "./about/about.component";
+import {ErrorComponent} from "./error/error.component";
 
 const routes: Routes = [
   {path:"", pathMatch:"full", redirectTo:"matrices"},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'matrices', component: MatricesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'algorithmic', component: AlgorithmicThinkingComponent},
-  {path: 'about', component: AboutComponent}
+  {path: 'about', component: AboutComponent},
+  {path:"**", component:ErrorComponent}
 ];
 
 @NgModule({

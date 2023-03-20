@@ -8,6 +8,7 @@ import { MatrixComponent } from './matrix/matrix.component';
 import { AlgorithmicThinkingComponent } from './algorithmic-thinking/algorithmic-thinking.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AboutComponent } from './about/about.component';
     MatrixComponent,
     AlgorithmicThinkingComponent,
     LoginComponent,
-    AboutComponent
+    AboutComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
