@@ -9,8 +9,8 @@ import {ErrorComponent} from "./error/error.component";
 
 const routes: Routes = [
   {path:"", pathMatch:"full", redirectTo:"matrices"},
-  {path: 'matrix', component: MatrixComponent},
   {path: 'matrices', component: MatricesComponent},
+  {path: 'matrices/:id', component: MatrixComponent},
   {path: 'login', component: LoginComponent},
   {path: 'algorithmic', component: AlgorithmicThinkingComponent},
   {path: 'about', component: AboutComponent},

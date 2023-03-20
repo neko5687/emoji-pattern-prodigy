@@ -1,0 +1,5 @@
+<div *ngFor="let emoji of matrix.matrix; let i = index">
+  <span *ngIf="i < 3">{{emoji}}</span>
+  <span *ngIf="i >= 3 && i<24">➡️</span>
+  <span *ngIf="i ===24">⏹️</span>
+</div>
