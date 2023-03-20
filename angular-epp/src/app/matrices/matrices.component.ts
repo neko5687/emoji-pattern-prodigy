@@ -24,15 +24,17 @@ interface Matrix {
   templateUrl: './matrices.component.html',
   styleUrls: ['./matrices.component.css']
 })
-export class MatricesComponent implements OnInit{
+export class MatricesComponent implements OnInit {
   matrices: MatrixDTO[] = [];
+
   constructor(private http: HttpClient) {
   }
+
   ngOnInit(): void {
     this.http.get<MatrixDTO[]>("http://localhost:8080/api/matrices").subscribe(result => this.matrices = result);
   }
 
-  convertDTOtoMatrix (matrixDto: MatrixDTO) : Matrix {
+  convertDTOtoMatrix(matrixDto: MatrixDTO): Matrix {
     const matrix: Matrix = {
       title: matrixDto.title,
       matrix: matrixDto.matrix.match(/\p{Emoji}/gu) || [],
