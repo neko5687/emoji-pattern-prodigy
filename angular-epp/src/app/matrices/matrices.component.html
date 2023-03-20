@@ -1,1 +1,10 @@
-<p>matrices works!</p>
+<div class="card_pattern_#01" *ngFor="let matrix of matrices">
+  <div class="component1" *ngFor="let emoji of matrix.matrix; let i = index">
+    <span *ngIf="i < 3">{{emoji}}</span>
+    <span *ngIf="i >= 3">➡️</span>
+    <span *ngIf="i ===25">⏹️</span>
+  </div>
+  <hr>
+  <span>❤️{{matrix.votes}}</span><span>Timer</span><span>{{matrix.difficulty}}</span>
+<button class="rectangle11">{{matrix.title}}</button>
+</div>

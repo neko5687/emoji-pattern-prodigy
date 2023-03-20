@@ -1,0 +1,33 @@
+.card_pattern_\#01 {
+  position: absolute;
+  width: 220px;
+  height: 320px;
+  left: 180px;
+  top: 358px;
+}
+
+.component1 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 190px;
+  top: 368px;
+}
+
+.component1 span {
+  display: inline-block;
+  font-size: 40px; /* adjust the font-size to your desired size */
+  margin-right: 5px; /* add some margin between each emoji */
+}
+
+.rectangle11{
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 192px;
+  height: 40px;
+  left: 194px;
+  top: 624px;
+  background: linear-gradient(92.83deg, #FF9900 -38.96%, #FF4DED 50.43%, #FFA800 139.82%);
+  border-radius: 7px;
+}
