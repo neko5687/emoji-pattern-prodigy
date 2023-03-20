@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 interface MatrixDTO {
   title: String,
   matrix: String,
-  votes: number,
+  vote: number,
   difficulty: number,
   createdAt: String,
 }
@@ -12,7 +12,7 @@ interface MatrixDTO {
 interface Matrix {
   title: String,
   matrix: String[],
-  votes: number,
+  vote: number,
   difficulty: String,
   createdAt: String,
 }
@@ -32,14 +32,13 @@ export class MatricesComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<MatrixDTO[]>("http://localhost:8080/api/matrices")
       .subscribe(result => {this.matrices = result.map(dto => this.convertDTOtoMatrix(dto))});
-    console.log("hallo" + this.matrices[0])
   }
 
   convertDTOtoMatrix(matrixDto: MatrixDTO): Matrix {
     const matrix: Matrix = {
       title: matrixDto.title,
       matrix: matrixDto.matrix.match(/\p{Emoji}/gu) || [],
-      votes: matrixDto.votes,
+      vote: matrixDto.vote,
       difficulty: "🌶️".repeat(matrixDto.difficulty),
       createdAt: matrixDto.createdAt,
     };
