@@ -1,12 +1,18 @@
-<div *ngFor="let matrix of matrices">
-  <div *ngFor="let emoji of matrix.matrix; let i = index">
-    <span *ngIf="i < 3">{{emoji}}</span>
-    <span *ngIf="i >= 3 && i<24">➡️</span>
-    <span *ngIf="i ===24">⏹️</span>
+<div class="cards-grid">
+  <div class="card-container" *ngFor="let matrix of matrices">
+    <div class="matrix-container">
+      <div class="matrix-item" *ngFor="let emoji of matrix.matrix; let i = index">
+        <span *ngIf="i < 3">{{emoji}}</span>
+        <span *ngIf="i >= 3 && i<24">➡️</span>
+        <span *ngIf="i ===24">⏹️</span>
+      </div>
+    </div>
+    <hr>
+    <div class="card-basic-info">
+      <span>❤️ {{matrix.vote}}</span><span>00:15</span><span>{{matrix.difficulty}}</span>
+    </div>
+    <div>
+      <button class="card-button">{{matrix.title}}</button>
+    </div>
   </div>
-  <hr>
-  <span>❤️{{matrix.vote}}</span><span>Timer</span><span>{{matrix.difficulty}}</span>
-  <button>{{matrix.title}}</button>
-  <hr>
-  <hr>
 </div>
