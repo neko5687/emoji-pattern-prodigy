@@ -25,9 +25,9 @@ public class TestDataController {
 
         matrixUserRepository.save(creator);
         matrixRepository.save(new Matrix(
-                "🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️", "Hearts and Butterflies", creator, 1));
+                "🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋️", "Hearts and Butterflies", creator, 1));
         matrixRepository.save(new Matrix(
-                "🐘🐘🦒🐘🐘🦕🐘🦒🐘🐘🦕🦒🐘🐘🦒🐘🦕🐘🐘🦒🐘❤️🦋❤️", "Very Weird Matrix", creator, 3));
+                "🐘🐘🦒🐘🐘🦕🐘🦒🐘🐘🦕🦒🐘🐘🦒🐘🦕🐘🐘🦒🐘❤️🦋❤️🦋️", "Very Weird Matrix", creator, 3));
         return "Testdata creation worked";
     }
 }
