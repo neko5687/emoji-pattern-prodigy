@@ -17,13 +17,16 @@ public class Matrix {
 
     private String matrix;
     private String title;
+    @ManyToOne
+    private MatrixUser creator;
     private int vote;
     private int difficulty;
     private Instant createdAt;
 
-    public Matrix(String matrix, String title, int difficulty) {
+    public Matrix(String matrix, String title, MatrixUser creator, int difficulty) {
         this.matrix = matrix;
         this.title = title;
+        this.creator = creator;
         this.vote = 0;
         this.difficulty = difficulty;
         this.createdAt = Instant.now();
