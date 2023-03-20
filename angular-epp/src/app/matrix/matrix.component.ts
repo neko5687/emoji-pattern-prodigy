@@ -32,7 +32,16 @@ interface Matrix {
 })
 export class MatrixComponent implements OnInit {
   matrixId: number = 0;
-  matrix?: Matrix;
+  matrix: Matrix = {
+    title: '',
+    matrix: [],
+    vote: 0,
+    difficulty: '',
+    createdAt: '',
+    creator: {
+      name: ''
+    }
+  };
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
   }
@@ -45,7 +54,7 @@ export class MatrixComponent implements OnInit {
     } else {
       this.matrixId = Number(idParam);
     }
-    this.http.get<MatrixDTO>('http://localhost:8080/api/matrices/}' + this.matrixId).subscribe(
+    this.http.get<MatrixDTO>('http://localhost:8080/api/matrices/' + this.matrixId).subscribe(
       result => this.matrix = this.convertDTOtoMatrix(result),
       error => this.router.navigate(["/error"])
     );
