@@ -19,10 +19,12 @@ public class TestDataController {
 
     @GetMapping("/api/testdata")
     public @ResponseBody String createTestData() {
+        MatrixUser creator = new MatrixUser("Admin");
+
         matrixRepository.save(new Matrix(
-                "🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️", "Hearts and Butterflies", 1));
+                "🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️", "Hearts and Butterflies", creator, 1));
         matrixRepository.save(new Matrix(
-                "🐘🐘🦒🐘🐘🦕🐘🦒🐘🐘🦕🦒🐘🐘🦒🐘🦕🐘🐘🦒🐘❤️🦋❤️", "Very Weird Matrix", 3));
+                "🐘🐘🦒🐘🐘🦕🐘🦒🐘🐘🦕🦒🐘🐘🦒🐘🦕🐘🐘🦒🐘❤️🦋❤️", "Very Weird Matrix", creator, 3));
         return "Testdata creation worked";
     }
 }
