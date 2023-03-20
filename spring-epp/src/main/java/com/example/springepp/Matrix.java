@@ -14,14 +14,14 @@ public class Matrix {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ElementCollection
-    private List<String> matrix;
+
+    private String matrix;
     private String title;
     private int vote;
     private int difficulty;
     private Instant createdAt;
 
-    public Matrix(List<String> matrix, String title, int difficulty) {
+    public Matrix(String matrix, String title, int difficulty) {
         this.matrix = matrix;
         this.title = title;
         this.vote = 0;
