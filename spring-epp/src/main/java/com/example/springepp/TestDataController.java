@@ -10,19 +10,24 @@ import java.util.List;
 
 @Controller
 public class TestDataController {
+    private MatrixUserRepository matrixUserRepository;
     private MatrixRepository matrixRepository;
 
     @Autowired
-    public TestDataController(MatrixRepository matrixRepository) {
+    public TestDataController(MatrixRepository matrixRepository, MatrixUserRepository matrixUserRepository) {
         this.matrixRepository = matrixRepository;
+        this.matrixUserRepository = matrixUserRepository;
     }
 
     @GetMapping("/api/testdata")
     public @ResponseBody String createTestData() {
+        MatrixUser creator = new MatrixUser("Admin");
+
+        matrixUserRepository.save(creator);
         matrixRepository.save(new Matrix(
-                "🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️", "Hearts and Butterflies", 1));
+                "🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️", "Hearts and Butterflies", creator, 1));
         matrixRepository.save(new Matrix(
-                "🐘🐘🦒🐘🐘🦕🐘🦒🐘🐘🦕🦒🐘🐘🦒🐘🦕🐘🐘🦒🐘❤️🦋❤️", "Very Weird Matrix", 3));
+                "🐘🐘🦒🐘🐘🦕🐘🦒🐘🐘🦕🦒🐘🐘🦒🐘🦕🐘🐘🦒🐘❤️🦋❤️", "Very Weird Matrix", creator, 3));
         return "Testdata creation worked";
     }
 }
