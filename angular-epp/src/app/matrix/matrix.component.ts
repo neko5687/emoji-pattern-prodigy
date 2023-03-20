@@ -13,7 +13,6 @@ interface MatrixDTO {
   }
 }
 
-
 interface Matrix {
   title: String,
   matrix: String[],
