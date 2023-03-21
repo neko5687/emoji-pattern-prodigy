@@ -1,8 +1,16 @@
 <div class="matrix-container">
-<div *ngFor="let emoji of matrix.matrix; let i = index" >
-  <div class="matrix-item">
-  <span *ngIf="i < 24">{{emoji}}</span>
-  <span *ngIf="i ===24">⏹️</span>
+  <div *ngFor="let emoji of matrix.matrix; let i = index">
+    <div class="matrix-item">
+      <span *ngIf="i < 24">{{emoji}}</span>
+      <span>{{matrixSolution}}</span>
+    </div>
   </div>
 </div>
+<div *ngIf="isSolving">
+  <div *ngFor="let emoji of possibleInput">
+    <button (click)="matrixSolution = emoji">{{emoji}}</button>
+  </div>
 </div>
+<button *ngIf="!isSolving" (click)="startSolving()">Solve</button>
+<button *ngIf="isSolving" (click)="endSolving()">Submit</button>
+

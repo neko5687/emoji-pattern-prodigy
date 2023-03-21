@@ -29,6 +29,11 @@ interface Matrix {
 })
 export class MatrixComponent implements OnInit {
   matrixId: number = 0;
+
+  matrixSolution: String = "";
+
+  possibleInput: string[] = [];
+  isSolving: boolean = false;
   matrix: Matrix = {
     id: 0,
     title: '',
@@ -69,4 +74,18 @@ export class MatrixComponent implements OnInit {
     return matrix;
   }
 
+
+  startSolving() {
+    this.getPossibleInput();
+    this.isSolving = true;
+  }
+
+  getPossibleInput() {
+    this.possibleInput = [...new Set(this.matrix.matrix)];
+  }
+
+
+  endSolving() {
+
+  }
 }
