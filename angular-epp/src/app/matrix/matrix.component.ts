@@ -45,6 +45,8 @@ export class MatrixComponent implements OnInit {
     createdAt: '',
     creatorName: ''
   };
+  intervalId: any;
+  remainingSeconds: number = 5;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
   }
@@ -79,6 +81,7 @@ export class MatrixComponent implements OnInit {
 
   startSolving() {
     this.getPossibleInput();
+    this.startTimer()
     this.isSolving = true;
   }
 
@@ -92,5 +95,15 @@ export class MatrixComponent implements OnInit {
     if (this.matrixSolution === this.matrix.matrix[24]) {
       this.isCorrect = true;
     }
+  }
+
+  startTimer() {
+    this.intervalId = setInterval(() => {
+      this.remainingSeconds--;
+      if (this.remainingSeconds === 0) {
+        clearInterval(this.intervalId);
+        this.endSolving();
+      }
+    }, 1000);
   }
 }
