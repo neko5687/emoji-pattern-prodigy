@@ -21,7 +21,7 @@ interface Matrix {
   difficulty: string,
   createdAt: string,
   creatorName: string,
-  hint:string
+  hint: string
 }
 
 @Component({
@@ -32,13 +32,13 @@ interface Matrix {
 export class MatrixComponent implements OnInit {
   matrixId: number = 0;
 
-  matrixSolution: String = "";
+  matrixSolution: String = "?";
 
   possibleInput: string[] = [];
   isSolving: boolean = false;
   afterSolving: boolean = false;
   isCorrect: boolean = false;
-  hintVisible: boolean=false;
+  hintVisible: boolean = false;
 
   matrix: Matrix = {
     id: 0,
@@ -48,10 +48,10 @@ export class MatrixComponent implements OnInit {
     difficulty: '',
     createdAt: '',
     creatorName: '',
-    hint:''
+    hint: ''
   };
   intervalId: any;
-  remainingSeconds: number = 5;
+  remainingSeconds: any = 15;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
   }
@@ -79,7 +79,7 @@ export class MatrixComponent implements OnInit {
       difficulty: "🌶️".repeat(matrixDto.difficulty),
       createdAt: matrixDto.createdAt,
       creatorName: matrixDto.creatorName,
-      hint:matrixDto.hint
+      hint: matrixDto.hint
     };
     return matrix;
   }
@@ -105,17 +105,21 @@ export class MatrixComponent implements OnInit {
   }
 
   startTimer() {
+    let seconds: number;
     this.intervalId = setInterval(() => {
       this.remainingSeconds--;
-      if (this.remainingSeconds === 0) {
-        clearInterval(this.intervalId);
-        this.endSolving();
+      if (this.remainingSeconds < 10) {
+        this.remainingSeconds = "0" + this.remainingSeconds;
+        if (this.remainingSeconds === "0" + 0) {
+          clearInterval(this.intervalId);
+          this.endSolving();
+        }
       }
     }, 1000);
   }
 
-  showHint(){
-    this.hintVisible=true;
+  showHint() {
+    this.hintVisible = true;
   }
 
 }
