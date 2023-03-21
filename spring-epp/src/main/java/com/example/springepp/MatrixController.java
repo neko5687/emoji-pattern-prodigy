@@ -2,10 +2,12 @@ package com.example.springepp;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -42,7 +44,7 @@ public class MatrixController {
             response = new MatrixDTO(matrix.getMatrix(), matrix.getId(),matrix.getTitle(), matrix.getCreatedAt(),
                     matrix.getCreator().getName(), matrix.getVote(), matrix.getDifficulty());
         } else {
-            //TODO: Errorhandling here
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Matrix not found");
         }
         return response;
     }
