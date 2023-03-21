@@ -2,19 +2,21 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 interface MatrixDTO {
-  title: String,
-  matrix: String,
+  id: number
+  title: string,
+  matrix: string,
   vote: number,
   difficulty: number,
-  createdAt: String,
+  createdAt: string,
 }
 
 interface Matrix {
-  title: String,
-  matrix: String[],
+  id: number,
+  title: string,
+  matrix: string[],
   vote: number,
-  difficulty: String,
-  createdAt: String,
+  difficulty: string,
+  createdAt: string,
 }
 
 
@@ -36,6 +38,7 @@ export class MatricesComponent implements OnInit {
 
   convertDTOtoMatrix(matrixDto: MatrixDTO): Matrix {
     const matrix: Matrix = {
+      id: matrixDto.id,
       title: matrixDto.title,
       matrix: matrixDto.matrix.match(/\p{Emoji}/gu) || [],
       vote: matrixDto.vote,

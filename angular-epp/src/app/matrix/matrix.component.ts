@@ -3,25 +3,23 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 
 interface MatrixDTO {
-  title: String,
-  matrix: String,
+  id: number,
+  title: string,
+  matrix: string,
   vote: number,
   difficulty: number,
-  createdAt: String,
-  creator: {
-    name: string
-  }
+  createdAt: string,
+  creatorName: string
 }
 
 interface Matrix {
-  title: String,
-  matrix: String[],
+  id: number,
+  title: string,
+  matrix: string[],
   vote: number,
-  difficulty: String,
-  createdAt: String,
-  creator: {
-    name: string
-  }
+  difficulty: string,
+  createdAt: string,
+  creatorName: string
 }
 
 @Component({
@@ -32,14 +30,13 @@ interface Matrix {
 export class MatrixComponent implements OnInit {
   matrixId: number = 0;
   matrix: Matrix = {
+    id: 0,
     title: '',
     matrix: [],
     vote: 0,
     difficulty: '',
     createdAt: '',
-    creator: {
-      name: ''
-    }
+    creatorName: ''
   };
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
@@ -61,12 +58,13 @@ export class MatrixComponent implements OnInit {
 
   convertDTOtoMatrix(matrixDto: MatrixDTO): Matrix {
     const matrix: Matrix = {
+      id: matrixDto.id,
       title: matrixDto.title,
       matrix: matrixDto.matrix.match(/\p{Emoji}/gu) || [],
       vote: matrixDto.vote,
       difficulty: "🌶️".repeat(matrixDto.difficulty),
       createdAt: matrixDto.createdAt,
-      creator: matrixDto.creator
+      creatorName: matrixDto.creatorName
     };
     return matrix;
   }
