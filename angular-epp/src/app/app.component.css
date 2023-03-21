@@ -1,0 +1,43 @@
+.background-header-matrices {
+  height: 288px;
+  background: linear-gradient(264.49deg, #751AE5 19.02%, #9E6BF5 61.4%, #0D37FC 105.54%);
+  display: flex;
+}
+
+.welcome-message {
+  position: absolute;
+  width: 720px;
+  height: 50px;
+  left: calc(50% - 720px/2);
+  top: 155px;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.tagline {
+  position: absolute;
+  width: 402px;
+  height: 22px;
+  left: calc(50% - 402px/2);
+  top: 232px;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.header-item{
+  position: absolute;
+  width: 173px;
+  height: 85px;
+  left: calc(50% - 173px/2 - 0.5px);
+  top: 39px;
+}
