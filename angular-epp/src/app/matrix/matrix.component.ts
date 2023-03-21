@@ -9,7 +9,8 @@ interface MatrixDTO {
   vote: number,
   difficulty: number,
   createdAt: string,
-  creatorName: string
+  creatorName: string,
+  hint: string
 }
 
 interface Matrix {
@@ -19,7 +20,8 @@ interface Matrix {
   vote: number,
   difficulty: string,
   createdAt: string,
-  creatorName: string
+  creatorName: string,
+  hint:string
 }
 
 @Component({
@@ -36,6 +38,8 @@ export class MatrixComponent implements OnInit {
   isSolving: boolean = false;
   afterSolving: boolean = false;
   isCorrect: boolean = false;
+  hintVisible: boolean=false;
+
   matrix: Matrix = {
     id: 0,
     title: '',
@@ -43,7 +47,8 @@ export class MatrixComponent implements OnInit {
     vote: 0,
     difficulty: '',
     createdAt: '',
-    creatorName: ''
+    creatorName: '',
+    hint:''
   };
   intervalId: any;
   remainingSeconds: number = 5;
@@ -73,7 +78,8 @@ export class MatrixComponent implements OnInit {
       vote: matrixDto.vote,
       difficulty: "🌶️".repeat(matrixDto.difficulty),
       createdAt: matrixDto.createdAt,
-      creatorName: matrixDto.creatorName
+      creatorName: matrixDto.creatorName,
+      hint:matrixDto.hint
     };
     return matrix;
   }
@@ -92,6 +98,7 @@ export class MatrixComponent implements OnInit {
 
   endSolving() {
     this.afterSolving = true;
+    this.hintVisible = false;
     if (this.matrixSolution === this.matrix.matrix[24]) {
       this.isCorrect = true;
     }
@@ -106,4 +113,9 @@ export class MatrixComponent implements OnInit {
       }
     }, 1000);
   }
+
+  showHint(){
+    this.hintVisible=true;
+  }
+
 }

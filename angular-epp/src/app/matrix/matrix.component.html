@@ -17,3 +17,6 @@
 <div *ngIf="afterSolving&&isCorrect">Correct!</div>
 <div *ngIf="afterSolving&&!isCorrect">False!</div>
 
+<button *ngIf="isSolving&&!afterSolving" (click)="showHint()">Hint</button>
+<div *ngIf="hintVisible">{{matrix.hint}}</div>
+

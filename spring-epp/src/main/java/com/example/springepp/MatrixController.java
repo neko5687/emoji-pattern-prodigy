@@ -30,7 +30,7 @@ public class MatrixController {
 
         for (Matrix matrix : matrixRepository.findAll()) {
             response.add(new MatrixDTO(matrix.getMatrix(), matrix.getId(), matrix.getTitle(), matrix.getCreatedAt(),
-                    matrix.getCreator().getName(), matrix.getVote(), matrix.getDifficulty()));
+                    matrix.getCreator().getName(), matrix.getVote(), matrix.getDifficulty(), matrix.getHint()));
         }
         return response;
     }
@@ -42,7 +42,7 @@ public class MatrixController {
         if (optionalMatrix.isPresent()) {
             Matrix matrix = optionalMatrix.get();
             response = new MatrixDTO(matrix.getMatrix(), matrix.getId(),matrix.getTitle(), matrix.getCreatedAt(),
-                    matrix.getCreator().getName(), matrix.getVote(), matrix.getDifficulty());
+                    matrix.getCreator().getName(), matrix.getVote(), matrix.getDifficulty(), matrix.getHint());
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Matrix not found");
         }

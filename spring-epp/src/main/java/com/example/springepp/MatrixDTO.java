@@ -16,8 +16,9 @@ public class MatrixDTO {
     private String creatorName;
     private int vote;
     private int difficulty;
+    private String hint;
 
-    public MatrixDTO(String matrix, long id, String title, Instant createdAt, String creatorName, int vote, int difficulty) {
+    public MatrixDTO(String matrix, long id, String title, Instant createdAt, String creatorName, int vote, int difficulty,String hint) {
         this.matrix = matrix;
         this.createdAt = createdAt;
         this.creatorName = creatorName;
@@ -25,5 +26,6 @@ public class MatrixDTO {
         this.vote = vote;
         this.difficulty = difficulty;
         this.id=id;
+        this.hint=hint;
     }
 }
