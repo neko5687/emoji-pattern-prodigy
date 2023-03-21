@@ -11,6 +11,7 @@
     <button (click)="matrixSolution = emoji">{{emoji}}</button>
   </div>
 </div>
+<div *ngIf="isSolving&&!afterSolving">Timer: {{remainingSeconds}}</div>
 <button *ngIf="!isSolving" (click)="startSolving()">Solve</button>
 <button *ngIf="isSolving&&!afterSolving" (click)="endSolving()">Submit</button>
 <div *ngIf="afterSolving&&isCorrect">Correct!</div>
