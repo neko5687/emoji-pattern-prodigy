@@ -2,7 +2,7 @@
   <div *ngFor="let emoji of matrix.matrix; let i = index">
     <div class="matrix-item">
       <span *ngIf="i < 24">{{emoji}}</span>
-      <span>{{matrixSolution}}</span>
+      <span *ngIf="i === 24">{{matrixSolution}}</span>
     </div>
   </div>
 </div>
@@ -12,5 +12,7 @@
   </div>
 </div>
 <button *ngIf="!isSolving" (click)="startSolving()">Solve</button>
-<button *ngIf="isSolving" (click)="endSolving()">Submit</button>
+<button *ngIf="isSolving&&!afterSolving" (click)="endSolving()">Submit</button>
+<div *ngIf="afterSolving&&isCorrect">Correct!</div>
+<div *ngIf="afterSolving&&!isCorrect">False!</div>
 

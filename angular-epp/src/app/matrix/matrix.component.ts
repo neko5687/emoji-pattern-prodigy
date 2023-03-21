@@ -34,6 +34,8 @@ export class MatrixComponent implements OnInit {
 
   possibleInput: string[] = [];
   isSolving: boolean = false;
+  afterSolving: boolean = false;
+  isCorrect: boolean = false;
   matrix: Matrix = {
     id: 0,
     title: '',
@@ -86,6 +88,9 @@ export class MatrixComponent implements OnInit {
 
 
   endSolving() {
-
+    this.afterSolving = true;
+    if (this.matrixSolution === this.matrix.matrix[24]) {
+      this.isCorrect = true;
+    }
   }
 }
