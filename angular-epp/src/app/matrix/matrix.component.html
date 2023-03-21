@@ -6,7 +6,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="isSolving">
+<div *ngIf="isSolving&&!afterSolving">
   <div *ngFor="let emoji of possibleInput">
     <button (click)="matrixSolution = emoji">{{emoji}}</button>
   </div>
