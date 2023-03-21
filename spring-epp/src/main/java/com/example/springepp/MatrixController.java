@@ -3,10 +3,7 @@ package com.example.springepp;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.LinkedList;
@@ -41,11 +38,18 @@ public class MatrixController {
         MatrixDTO response = new MatrixDTO();
         if (optionalMatrix.isPresent()) {
             Matrix matrix = optionalMatrix.get();
-            response = new MatrixDTO(matrix.getMatrix(), matrix.getId(),matrix.getTitle(), matrix.getCreatedAt(),
+            response = new MatrixDTO(matrix.getMatrix(), matrix.getId(), matrix.getTitle(), matrix.getCreatedAt(),
                     matrix.getCreator().getName(), matrix.getVote(), matrix.getDifficulty(), matrix.getHint());
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Matrix not found");
         }
         return response;
+    }
+
+    @PostMapping("/api/matrices/{id}")
+    public void vote(@RequestBody MatrixVoteDTO matrixVoteDTO) {
+        Matrix matrix = matrixRepository.findById(matrixVoteDTO.id).get();
+        matrix.setVote(matrixVoteDTO.vote);
+        matrixRepository.save(matrix);
     }
 }

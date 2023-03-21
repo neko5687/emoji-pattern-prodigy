@@ -21,7 +21,12 @@ interface Matrix {
   difficulty: string,
   createdAt: string,
   creatorName: string,
-  hint:string
+  hint: string
+}
+
+interface MatrixDTOVote {
+  id: number,
+  vote: number
 }
 
 @Component({
@@ -38,7 +43,8 @@ export class MatrixComponent implements OnInit {
   isSolving: boolean = false;
   afterSolving: boolean = false;
   isCorrect: boolean = false;
-  hintVisible: boolean=false;
+  hintVisible: boolean = false;
+
 
   matrix: Matrix = {
     id: 0,
@@ -48,10 +54,11 @@ export class MatrixComponent implements OnInit {
     difficulty: '',
     createdAt: '',
     creatorName: '',
-    hint:''
+    hint: ''
   };
   intervalId: any;
   remainingSeconds: number = 5;
+  votingPossible: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
   }
@@ -79,7 +86,7 @@ export class MatrixComponent implements OnInit {
       difficulty: "🌶️".repeat(matrixDto.difficulty),
       createdAt: matrixDto.createdAt,
       creatorName: matrixDto.creatorName,
-      hint:matrixDto.hint
+      hint: matrixDto.hint
     };
     return matrix;
   }
@@ -99,6 +106,7 @@ export class MatrixComponent implements OnInit {
   endSolving() {
     this.afterSolving = true;
     this.hintVisible = false;
+    this.votingPossible = true;
     if (this.matrixSolution === this.matrix.matrix[24]) {
       this.isCorrect = true;
     }
@@ -114,8 +122,20 @@ export class MatrixComponent implements OnInit {
     }, 1000);
   }
 
-  showHint(){
-    this.hintVisible=true;
+  showHint() {
+    this.hintVisible = true;
   }
 
+  upvote() {
+    this.votingPossible = false;
+    let payload: MatrixDTOVote = {id: this.matrix.id, vote: (this.matrix.vote + 1)}
+    this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe();
+  }
+
+
+  downvote() {
+    this.votingPossible = false;
+    let payload: MatrixDTOVote = {id: this.matrix.id, vote: (this.matrix.vote - 1)}
+    this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe();
+  }
 }
