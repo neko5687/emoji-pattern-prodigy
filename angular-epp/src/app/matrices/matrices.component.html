@@ -12,7 +12,7 @@
       <span>❤️ {{matrix.vote}}</span><span>00:15</span><span>{{matrix.difficulty}}</span>
     </div>
     <div>
-      <button class="card-button">{{matrix.title}}</button>
+      <button [routerLink]="'matrices/' + matrix.id" class="card-button">{{matrix.title}}</button>
     </div>
   </div>
 </div>
