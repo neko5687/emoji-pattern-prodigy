@@ -27,8 +27,8 @@ public class MatrixController {
         List<MatrixDTO> response = new LinkedList<>();
 
         for (Matrix matrix : matrixRepository.findAll()) {
-            response.add(new MatrixDTO(matrix.getMatrix(), matrix.getTitle(), matrix.getCreatedAt(),
-                    matrix.getCreator(), matrix.getVote(), matrix.getDifficulty()));
+            response.add(new MatrixDTO(matrix.getMatrix(), matrix.getId(), matrix.getTitle(), matrix.getCreatedAt(),
+                    matrix.getCreator().getName(), matrix.getVote(), matrix.getDifficulty()));
         }
         return response;
     }
@@ -39,8 +39,8 @@ public class MatrixController {
         MatrixDTO response = new MatrixDTO();
         if (optionalMatrix.isPresent()) {
             Matrix matrix = optionalMatrix.get();
-            response = new MatrixDTO(matrix.getMatrix(), matrix.getTitle(), matrix.getCreatedAt(),
-                    matrix.getCreator(), matrix.getVote(), matrix.getDifficulty());
+            response = new MatrixDTO(matrix.getMatrix(), matrix.getId(),matrix.getTitle(), matrix.getCreatedAt(),
+                    matrix.getCreator().getName(), matrix.getVote(), matrix.getDifficulty());
         } else {
             //TODO: Errorhandling here
         }
