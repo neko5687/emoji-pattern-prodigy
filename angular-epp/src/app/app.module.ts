@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { ErrorComponent } from './error/error.component';
 import {FormsModule} from "@angular/forms";
 import { RequestInterceptor } from './request.interceptor';
+import { MatrixcreationComponent } from './matrixcreation/matrixcreation.component';
 import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
@@ -22,6 +23,8 @@ import { SignupComponent } from './signup/signup.component';
     AlgorithmicThinkingComponent,
     LoginComponent,
     AboutComponent,
+    ErrorComponent,
+    MatrixcreationComponent,
     ErrorComponent,
     SignupComponent
   ],
