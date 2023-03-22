@@ -6,12 +6,20 @@
   <p class="tagline">Think outside the emoji box! 😉</p>
 </div>
 
-<nav>
-  <a routerLink="matrices">Main</a> ||
-  <a routerLink="algorithmic">Algorithmic thinking</a> ||
-  <a routerLink="about">About </a>||
-  <a routerLink="login">Login </a>
-</nav>
+<div class="menu-container">
+  <div>
+    <a>Sort by</a>
+  </div>
+  <div class="menu-container-center">
+    <div class="menu">
+      <a routerLink="matrices">Main</a>
+      <a routerLink="algorithmic">Algorithmic thinking</a>
+      <a routerLink="about">About</a>
+    </div>
+  </div>
+  <div>
+    <a routerLink="login">Login</a>
+  </div>
+</div>
 
-<hr>
 <router-outlet></router-outlet>
