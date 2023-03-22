@@ -34,6 +34,7 @@ public class UserController {
     public ResponseEntity<RegisterResponseDTO> signup(@RequestBody RegisterRequest registerRequest) {
         currentUserService.signup(registerRequest);
         RegisterResponseDTO response = new RegisterResponseDTO();
+        response.setMessage("Registration worked");
         return ResponseEntity.ok(response);
     }
 
