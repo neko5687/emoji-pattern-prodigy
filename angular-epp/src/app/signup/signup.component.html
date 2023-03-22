@@ -1,0 +1,18 @@
+<form name="form" (ngSubmit)="signup()" #f= "ngForm">
+  <label >Username</label>
+  <input type="text"
+         name="username" [(ngModel)]="model.username" #username="ngModel" required/>
+   <label >E-Mail</label>
+  <input type="email"
+         name="email" [(ngModel)]="model.email" #username="ngModel" required/>
+    <label >Password</label>
+  <input type="password"
+         name="password1" [(ngModel)]="model.password1" #password1="ngModel" required/>
+  <label >Repeat Password</label>
+  <input type="password"
+         name="password2" [(ngModel)]="model.password2" #password2="ngModel" required/>
+  <div>
+    <button >Sign up</button>
+  </div>
+
+</form>
