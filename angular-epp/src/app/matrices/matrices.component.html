@@ -11,8 +11,8 @@
     <div class="matrix-container">
       <div class="matrix-item" *ngFor="let emoji of matrix.matrix; let i = index">
         <span *ngIf="i < 3">{{emoji}}</span>
-        <span *ngIf="i >= 3 && i<24">  <img class="header-item" src="assets/arrow-circle.svg" alt="Placeholder Arrow"></span>
-        <span *ngIf="i ===24">⏹️</span>
+        <span *ngIf="i >= 3 && i<24">  <img class="matrix-item" src="assets/arrow-circle.svg" alt="Placeholder Arrow"></span>
+        <span *ngIf="i ===24">  <img class="question-mark-item" src="assets/questionmark-box.svg" alt="Placeholder Arrow"></span>
       </div>
     </div>
     <hr>
