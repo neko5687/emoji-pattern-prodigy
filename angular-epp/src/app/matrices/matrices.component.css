@@ -1,6 +1,6 @@
 .cards-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 70px 70px;
   width: 80%;
   margin: 0 auto;
