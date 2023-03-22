@@ -24,7 +24,7 @@ import { SignupComponent } from './signup/signup.component';
     LoginComponent,
     AboutComponent,
     ErrorComponent,
-    MatrixcreationComponent
+    MatrixcreationComponent,
     ErrorComponent,
     SignupComponent
   ],
