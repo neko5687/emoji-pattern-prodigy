@@ -4,17 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 @Import(PasswordEncoderConfig.class)
 @Service
 public class CurrentUserService implements UserDetailsService {
     private final MatrixUserRepository matrixUserRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
 
 
     @Autowired
-    public CurrentUserService(MatrixUserRepository matrixUserRepository, PasswordEncoder passwordEncoder) {
+    public CurrentUserService(MatrixUserRepository matrixUserRepository, BCryptPasswordEncoder passwordEncoder) {
         this.matrixUserRepository = matrixUserRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -34,7 +35,9 @@ public class CurrentUserService implements UserDetailsService {
     }
 
     public MatrixUser signup(RegisterRequest registerRequest) {
+        System.out.println(registerRequest.getPassword());
         String encodedPassword = passwordEncoder.encode(registerRequest.getPassword());
+        System.out.println(passwordEncoder.matches(registerRequest.getPassword(), encodedPassword));
         return matrixUserRepository.save(
                 new MatrixUser(registerRequest.getUsername(), encodedPassword, registerRequest.getEmail()));
     }
