@@ -6,15 +6,17 @@ import {LoginComponent} from "./login/login.component";
 import {AlgorithmicThinkingComponent} from "./algorithmic-thinking/algorithmic-thinking.component";
 import {AboutComponent} from "./about/about.component";
 import {ErrorComponent} from "./error/error.component";
+import {AuthenticationGuard} from "./authentication.guard";
 
 const routes: Routes = [
-  {path:"", pathMatch:"full", redirectTo:"matrices"},
+  {path: 'login', component: LoginComponent},
+  {path:"", pathMatch:"full", canActivate:[AuthenticationGuard], children: [
   {path: 'matrices', component: MatricesComponent},
   {path: 'matrices/:id', component: MatrixComponent},
-  {path: 'login', component: LoginComponent},
   {path: 'algorithmic', component: AlgorithmicThinkingComponent},
   {path: 'about', component: AboutComponent},
   {path:"**", component:ErrorComponent}
+    ]}
 ];
 
 @NgModule({
