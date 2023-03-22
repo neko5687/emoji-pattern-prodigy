@@ -49,3 +49,10 @@
 .card-button {
   width: 100%;
 }
+
+.sort-button {
+  width: auto;
+  color: #751AE5;
+  background: #FFFFFF;
+  margin: 7px;
+}
