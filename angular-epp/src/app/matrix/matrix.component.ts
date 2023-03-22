@@ -132,13 +132,13 @@ export class MatrixComponent implements OnInit {
   upvote() {
     this.votingPossible = false;
     let payload: MatrixDTOVote = {id: this.matrix.id, vote: (this.matrix.vote + 1)}
-    this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe();
+    this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe(()=> location.reload());
   }
 
 
   downvote() {
     this.votingPossible = false;
     let payload: MatrixDTOVote = {id: this.matrix.id, vote: (this.matrix.vote - 1)}
-    this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe();
+    this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe(()=> location.reload());
   }
 }
