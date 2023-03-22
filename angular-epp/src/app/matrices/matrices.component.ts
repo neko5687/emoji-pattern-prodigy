@@ -28,12 +28,15 @@ interface Matrix {
 export class MatricesComponent implements OnInit {
   matrices: Matrix[] = [];
 
+
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
     this.http.get<MatrixDTO[]>("http://localhost:8080/api/matrices")
-      .subscribe(result => {this.matrices = result.map(dto => this.convertDTOtoMatrix(dto))});
+      .subscribe(result => {
+        this.matrices = result.map(dto => this.convertDTOtoMatrix(dto))
+      });
   }
 
   convertDTOtoMatrix(matrixDto: MatrixDTO): Matrix {
@@ -47,4 +50,21 @@ export class MatricesComponent implements OnInit {
     };
     return matrix;
   }
+
+  sortByVoteTopDown(matrices: Matrix[]): Matrix[] {
+    return matrices.sort((first, second) => second.vote - first.vote);
+  }
+
+  sortByVoteDownTop(matrices: Matrix[]) {
+    return matrices.sort((first, second) => first.vote - second.vote);
+  }
+
+  sortByDifficultyTopDown(matrices: Matrix[]): Matrix[] {
+    return matrices.sort((first, second) => (second.difficulty.length) - (first.difficulty.length));
+  }
+
+  sortByDifficultyDownTop(matrices: Matrix[]): Matrix[] {
+    return matrices.sort((first, second) =>(first.difficulty.length) -(second.difficulty.length));
+  }
+
 }
