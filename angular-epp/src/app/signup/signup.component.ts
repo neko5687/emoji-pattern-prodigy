@@ -39,7 +39,6 @@ export class SignupComponent {
       this.payload.username = this.model.username;
       this.payload.email = this.model.email;
       this.payload.password = this.model.password1;
-      console.log(this.payload);
       this.http.post<any>('http://localhost:8080/signup', this.payload)
         .subscribe(res => {this.router.navigate(['/login'])})
     }

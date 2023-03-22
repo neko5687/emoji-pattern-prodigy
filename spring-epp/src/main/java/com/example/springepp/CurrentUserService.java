@@ -35,9 +35,7 @@ public class CurrentUserService implements UserDetailsService {
     }
 
     public MatrixUser signup(RegisterRequest registerRequest) {
-        System.out.println(registerRequest.getPassword());
         String encodedPassword = passwordEncoder.encode(registerRequest.getPassword());
-        System.out.println(passwordEncoder.matches(registerRequest.getPassword(), encodedPassword));
         return matrixUserRepository.save(
                 new MatrixUser(registerRequest.getUsername(), encodedPassword, registerRequest.getEmail()));
     }
