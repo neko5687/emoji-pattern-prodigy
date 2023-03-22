@@ -1,10 +1,8 @@
 <div>
   <label for="sort-dropdown">Sort by:</label>
   <select id="sort-dropdown">
-  <option (click)="sortByVoteTopDown(matrices)">votes ↑</option>
-  <option (click)="sortByVoteDownTop(matrices)">votes ↓</option>
-  <option (click)="sortByDifficultyTopDown(matrices)">difficulty ↑</option>
-  <option (click)="sortByDifficultyDownTop(matrices)">difficulty ↓</option>
+  <option (click)="sortByVote()">votes ↑↓</option>
+  <option (click)="sortByDifficulty()">difficulty ↑↓</option>
   </select>
 </div>
 
