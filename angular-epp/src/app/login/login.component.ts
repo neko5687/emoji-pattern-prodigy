@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.http.post<any>('http://localhost:8080/login', this.model).subscribe(res => {
         this.sessionId = res.sessionId;
-        console.log(this.model)
         sessionStorage.setItem(
           'token',
           this.sessionId

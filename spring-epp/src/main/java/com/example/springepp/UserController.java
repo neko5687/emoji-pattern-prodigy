@@ -16,6 +16,9 @@ public class UserController {
     @Autowired
     public SessionRegistry sessionRegistry;
 
+    @Autowired
+    public CurrentUserService currentUserService;
+
 
     @PostMapping("/login")
     public ResponseEntity<ResponseDTO> login(@RequestBody MatrixUserDTO user) {
@@ -25,6 +28,12 @@ public class UserController {
         response.setSessionId(sessionId);
         response.setUserName(user.getUserName());
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<String> signup(@RequestBody RegisterRequest registerRequest) {
+        currentUserService.signup(registerRequest);
+        return ResponseEntity.ok("User Registration Successful");
     }
 
 }

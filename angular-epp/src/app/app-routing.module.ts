@@ -9,9 +9,12 @@ import {ErrorComponent} from "./error/error.component";
 import {AuthenticationGuard} from "./authentication.guard";
 import {MatrixcreationComponent} from "./matrixcreation/matrixcreation.component";
 
+import {SignupComponent} from "./signup/signup.component";
+
 const routes: Routes = [
   {path:"", pathMatch:"full", redirectTo:"matrices"},
   {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
   {path: 'matrices', component: MatricesComponent},
   {path: 'matrix-creation', component: MatrixcreationComponent, canActivate: [AuthenticationGuard]},
   {path: 'about', component: AboutComponent},
