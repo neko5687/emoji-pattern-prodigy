@@ -1,10 +1,6 @@
-.matrix-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 0 10px;
-  padding: 10px;
-  width: fit-content;
+.main-container {
+  display: flex;
+  justify-content: center;
 }
 
 .card-container {
@@ -13,8 +9,18 @@
   border-style: solid;
   border-color: #751AE5;
   padding: 10px;
+  margin-top: 150px;
   border-radius: 10px;
   background: #FFFFFF;
+}
+
+.matrix-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0 10px;
+  padding: 10px;
+  width: fit-content;
 }
 
 .card-basic-info {
@@ -35,6 +41,14 @@
 .possible-input {
   display: flex;
   justify-content: center;
+}
+
+.possible-input-button {
+  background: #FFFFFF;
+}
+
+.vote-button {
+  background: #FFFFFF;
 }
 
 .timer {
