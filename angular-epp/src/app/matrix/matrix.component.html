@@ -1,32 +1,34 @@
-<div class="card-container">
-  <div class="matrix-container">
-    <div *ngFor="let emoji of matrix.matrix; let i = index">
-      <div class="matrix-item">
-        <span *ngIf="i < 24">{{emoji}}</span>
-        <span *ngIf="i === 24">{{matrixSolution}}</span>
+<div class="main-container">
+  <div class="card-container">
+    <div class="matrix-container">
+      <div *ngFor="let emoji of matrix.matrix; let i = index">
+        <div class="matrix-item">
+          <span *ngIf="i < 24">{{emoji}}</span>
+          <span *ngIf="i === 24">{{matrixSolution}}</span>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="card-basic-info">
-    <div>❤️ {{matrix.vote}}</div>
-    <div>
-      <div class="timer" *ngIf="isSolving&&!afterSolving">00:{{remainingSeconds}}</div>
-      <div *ngIf="afterSolving&&isCorrect">Correct!</div>
-      <div *ngIf="afterSolving&&!isCorrect">False!</div>
+    <div class="card-basic-info">
+      <div>❤️ {{matrix.vote}}</div>
+      <div>
+        <div class="timer" *ngIf="isSolving&&!afterSolving">00:{{remainingSeconds}}</div>
+        <div *ngIf="afterSolving&&isCorrect">Correct!</div>
+        <div *ngIf="afterSolving&&!isCorrect">False!</div>
+      </div>
+      <div>{{matrix.difficulty}}</div>
     </div>
-    <div>{{matrix.difficulty}}</div>
-  </div>
-  <div class="possible-input" *ngIf="isSolving&&!afterSolving">
-    <div *ngFor="let emoji of possibleInput">
-      <button (click)="matrixSolution = emoji">{{emoji}}</button>
+    <div class="possible-input" *ngIf="isSolving&&!afterSolving">
+      <div *ngFor="let emoji of possibleInput">
+        <button class="possible-input-button" (click)="matrixSolution = emoji">{{emoji}}</button>
+      </div>
     </div>
+    <button *ngIf="!isSolving" (click)="startSolving()">Solve</button>
+    <button *ngIf="isSolving&&!afterSolving" (click)="endSolving()">Submit</button>
+
   </div>
-  <button *ngIf="!isSolving" (click)="startSolving()">Solve</button>
-  <button *ngIf="isSolving&&!afterSolving" (click)="endSolving()">Submit</button>
+  <button class="solve-button" *ngIf="isSolving&&!afterSolving" (click)="showHint()">Hint</button>
+  <div *ngIf="hintVisible">{{matrix.hint}}</div>
+  <button *ngIf="votingPossible" (click)="upvote()">⬆️</button>
+  <button *ngIf="votingPossible" (click)="downvote()" [disabled]="matrix.vote==0">⬇️</button>
 
 </div>
-<button class="solve-button" *ngIf="isSolving&&!afterSolving" (click)="showHint()">Hint</button>
-<div *ngIf="hintVisible">{{matrix.hint}}</div>
-<button *ngIf="votingPossible" (click)="upvote()">⬆️</button>
-<button *ngIf="votingPossible" (click)="downvote()" [disabled]="matrix.vote==0" >⬇️</button>
-

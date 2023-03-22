@@ -6,3 +6,15 @@ body {
 body {
   background-color: #f4f4f4;
 }
+
+button {
+  background: linear-gradient(235.49deg, #751AE5 50.02%, #9E6BF5 80.4%, #0D37FC 220.54%);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
