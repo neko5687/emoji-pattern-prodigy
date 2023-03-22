@@ -44,7 +44,7 @@ public class WebSecurityConfig {
                                 ex.getMessage())
                 ).and()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/api/matrices", "/login**").permitAll()
+                        .requestMatchers("/api/matrices", "/login**", "/api/testdata").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(

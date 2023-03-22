@@ -18,9 +18,7 @@ public class TestDataController {
 
     @GetMapping("/api/testdata")
     public @ResponseBody String createTestData() {
-        MatrixUser creator = new MatrixUser("Admin");
-
-        matrixUserRepository.save(creator);
+        MatrixUser creator = matrixUserRepository.findByName("Admin");
         matrixRepository.save(new Matrix(
                 "🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋️", "Hearts and Butterflies", creator, 1, "Which one has wings?"));
         matrixRepository.save(new Matrix(
