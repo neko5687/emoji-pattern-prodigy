@@ -38,6 +38,10 @@ export class LoginComponent implements OnInit {
           'token',
           this.sessionId
         );
+        sessionStorage.setItem(
+          'userName',
+          res.userName
+        );
         this.router.navigate(['/matrices']);
       }, error => alert("Authentication failed"));
   }

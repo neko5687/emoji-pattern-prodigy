@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'matrices', component: MatricesComponent},
   {path: 'about', component: AboutComponent},
   {path: 'matrices/:id', component: MatrixComponent, canActivate: [AuthenticationGuard]},
-  {path: 'algorithmic', component: AlgorithmicThinkingComponent, canActivate: [AuthenticationGuard]},
+  {path: 'algorithmic', component: AlgorithmicThinkingComponent},
   {path: "**", component: ErrorComponent}
 ];
 

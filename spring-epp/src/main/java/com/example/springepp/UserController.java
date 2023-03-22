@@ -23,6 +23,7 @@ public class UserController {
         final String sessionId = sessionRegistry.registerSession(user.getUserName());
         ResponseDTO response = new ResponseDTO();
         response.setSessionId(sessionId);
+        response.setUserName(user.getUserName());
         return ResponseEntity.ok(response);
     }
 
