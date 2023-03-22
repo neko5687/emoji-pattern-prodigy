@@ -9,14 +9,13 @@ import {ErrorComponent} from "./error/error.component";
 import {AuthenticationGuard} from "./authentication.guard";
 
 const routes: Routes = [
+  {path:"", pathMatch:"full", redirectTo:"matrices"},
   {path: 'login', component: LoginComponent},
-  {path:"", pathMatch:"full", canActivate:[AuthenticationGuard], children: [
   {path: 'matrices', component: MatricesComponent},
-  {path: 'matrices/:id', component: MatrixComponent},
-  {path: 'algorithmic', component: AlgorithmicThinkingComponent},
   {path: 'about', component: AboutComponent},
-  {path:"**", component:ErrorComponent}
-    ]}
+  {path: 'matrices/:id', component: MatrixComponent, canActivate: [AuthenticationGuard]},
+  {path: 'algorithmic', component: AlgorithmicThinkingComponent, canActivate: [AuthenticationGuard]},
+  {path: "**", component: ErrorComponent}
 ];
 
 @NgModule({
