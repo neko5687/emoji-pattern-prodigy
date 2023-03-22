@@ -32,17 +32,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.http.post<any>('http://localhost:8080/login', this.model).subscribe(res => {
-      console.log(res)
-      if (res) {
         this.sessionId = res.sessionId;
         sessionStorage.setItem(
           'token',
           this.sessionId
         );
         this.router.navigate(['']);
-      } else {
-        alert("Authentication failed.")
-      }
-    });
+      }, error => alert("Authentication failed"));
   }
 }
