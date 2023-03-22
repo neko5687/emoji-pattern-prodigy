@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { ErrorComponent } from './error/error.component';
 import {FormsModule} from "@angular/forms";
 import { RequestInterceptor } from './request.interceptor';
+import { MatrixcreationComponent } from './matrixcreation/matrixcreation.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RequestInterceptor } from './request.interceptor';
     AlgorithmicThinkingComponent,
     LoginComponent,
     AboutComponent,
-    ErrorComponent
+    ErrorComponent,
+    MatrixcreationComponent
   ],
   imports: [
     BrowserModule,

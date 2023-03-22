@@ -7,11 +7,13 @@ import {AlgorithmicThinkingComponent} from "./algorithmic-thinking/algorithmic-t
 import {AboutComponent} from "./about/about.component";
 import {ErrorComponent} from "./error/error.component";
 import {AuthenticationGuard} from "./authentication.guard";
+import {MatrixcreationComponent} from "./matrixcreation/matrixcreation.component";
 
 const routes: Routes = [
   {path:"", pathMatch:"full", redirectTo:"matrices"},
   {path: 'login', component: LoginComponent},
   {path: 'matrices', component: MatricesComponent},
+  {path: 'matrix-creation', component: MatrixcreationComponent, canActivate: [AuthenticationGuard]},
   {path: 'about', component: AboutComponent},
   {path: 'matrices/:id', component: MatrixComponent, canActivate: [AuthenticationGuard]},
   {path: 'algorithmic', component: AlgorithmicThinkingComponent},
