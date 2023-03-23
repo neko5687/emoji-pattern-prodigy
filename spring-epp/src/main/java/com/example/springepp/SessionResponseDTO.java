@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ResponseDTO {
+public class SessionResponseDTO {
     private String sessionId;
     private String userName;
 }

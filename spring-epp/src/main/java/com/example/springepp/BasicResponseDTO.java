@@ -5,6 +5,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Data
-public class RegisterResponseDTO {
+public class BasicResponseDTO {
     String message;
 }
