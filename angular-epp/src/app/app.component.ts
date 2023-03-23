@@ -9,8 +9,9 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AppComponent {
   title = 'angular-epp';
-
+isLoggedIn: boolean;
   constructor(private router: Router, private http: HttpClient) {
+    this.isLoggedIn = sessionStorage.getItem("token")?.length !=0
   }
 
   logout() {
@@ -25,6 +26,7 @@ export class AppComponent {
       payload.sessionId = token;
       this.http.post<any>('http://localhost:8080/logout', payload).subscribe()
       sessionStorage.clear();
+      this.isLoggedIn = false;
     }
   }
 }
