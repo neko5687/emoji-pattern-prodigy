@@ -20,6 +20,9 @@ public class UserController {
     @Autowired
     public CurrentUserService currentUserService;
 
+    @Autowired
+    public MatrixUserRepository matrixUserRepository;
+
 
     @PostMapping("/login")
     public ResponseEntity<SessionResponseDTO> login(@RequestBody MatrixUserDTO user) {
@@ -28,6 +31,7 @@ public class UserController {
         SessionResponseDTO response = new SessionResponseDTO();
         response.setSessionId(sessionId);
         response.setUserName(user.getUserName());
+        response.setPoints(matrixUserRepository.findByName(user.getUserName()).getPoints());
         return ResponseEntity.ok(response);
     }
 

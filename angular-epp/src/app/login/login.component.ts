@@ -43,9 +43,14 @@ export class LoginComponent implements OnInit {
         'userName',
         res.userName
       );
+      sessionStorage.setItem(
+        'points',
+        res.points
+      );
       this.router.navigate(['/matrices']).then(() => {
         window.location.reload();
-      });;
+      });
+      ;
     }, error => alert("Invalid Username or Password. Login failed."));
   }
 }

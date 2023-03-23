@@ -8,4 +8,5 @@ import lombok.NoArgsConstructor;
 public class SessionResponseDTO {
     private String sessionId;
     private String userName;
+    private int points;
 }

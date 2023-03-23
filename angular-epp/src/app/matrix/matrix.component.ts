@@ -67,8 +67,12 @@ export class MatrixComponent implements OnInit {
 
   points: number = 0;
   maximumPoints: number = 0;
+  userName: string | null;
+  userPoints: string | null;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
+    this.userName = sessionStorage.getItem("userName");
+    this.userPoints = sessionStorage.getItem("points");
   }
 
   ngOnInit(): void {
@@ -132,6 +136,9 @@ export class MatrixComponent implements OnInit {
       points: this.points
     }
     this.http.post('http://localhost:8080/api/points', payload).subscribe()
+    let actualpoints = Number(sessionStorage.getItem("points"))+this.points;
+    sessionStorage.setItem("points", String(actualpoints));
+    this.userPoints = String(actualpoints);
   }
 
   stopTimer() {
