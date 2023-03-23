@@ -47,13 +47,16 @@ public class WebSecurityConfig {
                         sessionFilter,
                         UsernamePasswordAuthenticationFilter.class
                 )
-
-                .logout((logout) -> logout.permitAll());
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/api/matrices")
+                        .deleteCookies("JSESSIONID")
+                        .invalidateHttpSession(true)
+                );
 
         return http.build();
     }
     @Bean
-    public AuthenticationManager authenticationManager(){
+    public AuthenticationManager authenticationManager() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(currentUserService);
         authProvider.setPasswordEncoder(passwordEncoder);

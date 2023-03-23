@@ -39,12 +39,13 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+
     @PostMapping("/logout")
     public ResponseEntity<BasicResponseDTO> logout(@RequestBody SessionResponseDTO logoutRequest) {
-        sessionRegistry.logout(logoutRequest);
         BasicResponseDTO response = new BasicResponseDTO();
         response.setMessage("Logout worked");
         return ResponseEntity.ok(response);
     }
+
 
 }
