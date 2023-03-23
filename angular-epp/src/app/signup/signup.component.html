@@ -1,22 +1,45 @@
-<form name="form" (ngSubmit)="signup()" #f="ngForm">
-  <label>Username</label>
-  <input type="text"
-         name="username" [(ngModel)]="model.username" #username="ngModel" required/>
-  <div *ngIf="!isValidUsername()">Please enter a valid Username! Only characters, numbers and ._- are allowed.</div>
-  <label>E-Mail</label>
-  <input type="email"
-         name="email" [(ngModel)]="model.email" #username="ngModel" required/>
-  <div *ngIf="!isValidEmail()">Please enter a valid E-mail!</div>
-  <label>Password</label>
-  <input type="password"
-         name="password1" [(ngModel)]="model.password1" #password1="ngModel" required/>
-  <div *ngIf="!isValidPassword()"> The length of the password must be at least 8 characters. Only characters, numbers and !._-? are allowed. </div>
-  <label>Repeat Password</label>
-  <input type="password"
-         name="password2" [(ngModel)]="model.password2" #password2="ngModel" required/>
-  <div *ngIf="!isMatchingPasswords()">Passwords are not matching!</div>
-  <div>
-    <button [disabled]="!isValidEmail() || !isMatchingPasswords() || !isValidPassword() || !isValidUsername() ">Sign up</button>
+<h1 class="main-title"><span class="bold">Thanks</span> for signing up!</h1>
+<div class="main-container">
+  <div class="signin-container">
+    <form name="form" (ngSubmit)="signup()" #f="ngForm">
+      <label>Username </label>
+      <input type="text"
+             name="username" [(ngModel)]="model.username" #username="ngModel" required/>
+      <div class="div-min-hight">
+        <div class="not-validated" *ngIf="!isValidUsername()">Please enter a valid Username!<br> Only characters,
+          numbers and . _ - are allowed.
+        </div>
+        <div *ngIf="isValidUsername()">✅</div>
+      </div>
+      <label>E-Mail </label>
+      <input type="email"
+             name="email" [(ngModel)]="model.email" #username="ngModel" required/>
+      <div class="div-min-hight">
+        <div class="not-validated" *ngIf="!isValidEmail()">Please enter a valid E-Mail!</div>
+        <div *ngIf="isValidEmail()">✅</div>
+      </div>
+      <label>Password </label>
+      <input type="password"
+             name="password1" [(ngModel)]="model.password1" #password1="ngModel" required/>
+      <div class="div-min-hight">
+        <div class="not-validated" *ngIf="!isValidPassword()"> The length of the password must be at least 8 characters.<br>
+          Only characters, numbers and ! . _ - ? are allowed.
+        </div>
+        <div *ngIf="isValidPassword()">✅</div>
+      </div>
+      <label>Repeat Password </label>
+      <input type="password"
+             name="password2" [(ngModel)]="model.password2" #password2="ngModel" required/>
+      <div class="div-min-hight">
+        <div class="not-validated" *ngIf="!isMatchingPasswords()">Passwords are not matching!</div>
+        <div *ngIf="isMatchingPasswords()">✅</div>
+      </div>
+      <div class="center">
+        <button class="signin-button"
+                [disabled]="!isValidEmail() || !isMatchingPasswords() || !isValidPassword() || !isValidUsername() ">
+          Sign up
+        </button>
+      </div>
+    </form>
   </div>
-
-</form>
+</div>
