@@ -1,5 +1,6 @@
 package com.example.springepp;
 
+import com.example.springepp.session.Session;
 import com.example.springepp.session.SessionRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,20 +22,28 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<ResponseDTO> login(@RequestBody MatrixUserDTO user) {
+    public ResponseEntity<SessionResponseDTO> login(@RequestBody MatrixUserDTO user) {
         manager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));
         final String sessionId = sessionRegistry.registerSession(user.getUserName());
-        ResponseDTO response = new ResponseDTO();
+        SessionResponseDTO response = new SessionResponseDTO();
         response.setSessionId(sessionId);
         response.setUserName(user.getUserName());
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<RegisterResponseDTO> signup(@RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<BasicResponseDTO> signup(@RequestBody RegisterRequest registerRequest) {
         currentUserService.signup(registerRequest);
-        RegisterResponseDTO response = new RegisterResponseDTO();
+        BasicResponseDTO response = new BasicResponseDTO();
         response.setMessage("Registration worked");
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<BasicResponseDTO> logout(@RequestBody SessionResponseDTO logoutRequest) {
+        sessionRegistry.logout(logoutRequest);
+        BasicResponseDTO response = new BasicResponseDTO();
+        response.setMessage("Logout worked");
         return ResponseEntity.ok(response);
     }
 

@@ -1,6 +1,7 @@
 package com.example.springepp.session;
 
 import com.example.springepp.MatrixUserRepository;
+import com.example.springepp.SessionResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -45,5 +46,9 @@ public class SessionRegistry {
                         UUID.randomUUID().toString().getBytes(StandardCharsets.UTF_8)
                 )
         );
+    }
+
+    public void logout(SessionResponseDTO logoutRequest) {
+        sessionRepository.delete(sessionRepository.findByEncodedSessionId(logoutRequest.getSessionId()).get());
     }
 }
