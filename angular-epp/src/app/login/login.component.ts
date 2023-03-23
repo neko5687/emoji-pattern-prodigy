@@ -42,6 +42,6 @@ export class LoginComponent implements OnInit {
           res.userName
         );
         this.router.navigate(['/matrices']);
-      }, error => alert("Authentication failed"));
+      }, error => alert("Invalid Username or Password. Login failed."));
   }
 }
