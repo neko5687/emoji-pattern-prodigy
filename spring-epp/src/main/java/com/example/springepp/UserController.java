@@ -33,10 +33,16 @@ public class UserController {
 
     @PostMapping("/signup")
     public ResponseEntity<BasicResponseDTO> signup(@RequestBody RegisterRequest registerRequest) {
-        currentUserService.signup(registerRequest);
-        BasicResponseDTO response = new BasicResponseDTO();
-        response.setMessage("Registration worked");
-        return ResponseEntity.ok(response);
+        try {
+            currentUserService.signup(registerRequest);
+            BasicResponseDTO response = new BasicResponseDTO();
+            response.setMessage("Registration worked");
+            return ResponseEntity.ok(response);
+        } catch (IllegalArgumentException ex) {
+            BasicResponseDTO error = new BasicResponseDTO();
+            error.setMessage(ex.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
     }
 
 

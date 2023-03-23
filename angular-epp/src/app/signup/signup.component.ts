@@ -40,6 +40,8 @@ export class SignupComponent {
     this.http.post<any>('http://localhost:8080/signup', this.payload)
       .subscribe(res => {
         this.router.navigate(['/login'])
+      }, error => {
+        alert("Sign up failed. Username already exists")
       })
   }
 

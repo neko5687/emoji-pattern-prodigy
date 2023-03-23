@@ -35,6 +35,9 @@ public class CurrentUserService implements UserDetailsService {
     }
 
     public MatrixUser signup(RegisterRequest registerRequest) {
+        if(matrixUserRepository.findByName(registerRequest.getUsername()) != null) {
+            throw new IllegalArgumentException("Username already exists");
+        }
         String encodedPassword = passwordEncoder.encode(registerRequest.getPassword());
         return matrixUserRepository.save(
                 new MatrixUser(registerRequest.getUsername(), encodedPassword, registerRequest.getEmail()));
