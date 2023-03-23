@@ -1,5 +1,6 @@
-package com.example.springepp;
+package com.example.springepp.user;
 
+import com.example.springepp.user.MatrixUser;
 import org.springframework.data.repository.CrudRepository;
 
 public interface MatrixUserRepository extends CrudRepository<MatrixUser, Long>  {

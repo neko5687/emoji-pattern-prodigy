@@ -1,6 +1,8 @@
-package com.example.springepp;
+package com.example.springepp.security;
 
+import com.example.springepp.security.PasswordEncoderConfig;
 import com.example.springepp.session.SessionFilter;
+import com.example.springepp.user.CurrentUserService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

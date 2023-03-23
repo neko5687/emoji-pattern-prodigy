@@ -1,6 +1,6 @@
 package com.example.springepp.session;
 
-import com.example.springepp.MatrixUserRepository;
+import com.example.springepp.user.MatrixUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,8 @@
 package com.example.springepp.session;
 
 
-import com.example.springepp.CurrentUser;
-import com.example.springepp.CurrentUserService;
+import com.example.springepp.user.CurrentUser;
+import com.example.springepp.user.CurrentUserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

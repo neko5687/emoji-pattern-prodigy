@@ -1,13 +1,12 @@
 package com.example.springepp.session;
 
-import com.example.springepp.MatrixUser;
+import com.example.springepp.user.MatrixUser;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
 import java.util.UUID;
 
 @Entity

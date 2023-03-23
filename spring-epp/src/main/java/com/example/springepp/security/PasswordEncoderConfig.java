@@ -1,4 +1,4 @@
-package com.example.springepp;
+package com.example.springepp.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

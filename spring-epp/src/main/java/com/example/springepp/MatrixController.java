@@ -1,6 +1,10 @@
 package com.example.springepp;
 
-import jakarta.persistence.EntityNotFoundException;
+import com.example.springepp.dto.MatrixDTO;
+import com.example.springepp.dto.MatrixVoteDTO;
+import com.example.springepp.dto.PointsDTO;
+import com.example.springepp.user.MatrixUser;
+import com.example.springepp.user.MatrixUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -50,15 +54,15 @@ public class MatrixController {
 
     @PostMapping("/api/matrices/{id}")
     public void vote(@RequestBody MatrixVoteDTO matrixVoteDTO) {
-        Matrix matrix = matrixRepository.findById(matrixVoteDTO.id).get();
-        matrix.setVote(matrixVoteDTO.vote);
+        Matrix matrix = matrixRepository.findById(matrixVoteDTO.getId()).get();
+        matrix.setVote(matrixVoteDTO.getVote());
         matrixRepository.save(matrix);
     }
 
     @PostMapping("/api/points")
     public void savePoints(@RequestBody PointsDTO pointsDTO) {
-        MatrixUser user = matrixUserRepository.findByName(pointsDTO.userName);
-        user.setPoints(user.getPoints()+ pointsDTO.points);
+        MatrixUser user = matrixUserRepository.findByName(pointsDTO.getUserName());
+        user.setPoints(user.getPoints()+ pointsDTO.getPoints());
         matrixUserRepository.save(user);
     }
 }

@@ -1,6 +1,9 @@
-package com.example.springepp;
+package com.example.springepp.user;
 
-import com.example.springepp.session.Session;
+import com.example.springepp.dto.RegisterRequest;
+import com.example.springepp.dto.BasicResponseDTO;
+import com.example.springepp.dto.MatrixUserDTO;
+import com.example.springepp.dto.SessionResponseDTO;
 import com.example.springepp.session.SessionRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
