@@ -56,3 +56,11 @@
   background: #FFFFFF;
   margin: 7px;
 }
+
+.sort-button:hover {
+  background-color: #f4f4f4;
+}
+
+.sort-button:active {
+  transform: translateY(2px);
+}
