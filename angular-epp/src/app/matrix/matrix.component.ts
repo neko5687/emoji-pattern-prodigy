@@ -37,7 +37,7 @@ interface MatrixDTOVote {
 export class MatrixComponent implements OnInit {
   matrixId: number = 0;
 
-  matrixSolution: String = "?";
+  matrixSolution: string = "?";
 
   possibleInput: string[] = [];
   isSolving: boolean = false;
