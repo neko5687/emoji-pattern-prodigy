@@ -28,7 +28,7 @@
 
   <button class="solve-button" *ngIf="isSolving&&!afterSolving" (click)="showHint()">Hint</button>
   <div *ngIf="hintVisible">{{matrix.hint}}</div>
-  <button class="vote-button" *ngIf="votingPossible" (click)="upvote()">⬆️</button>
-  <button class="vote-button" *ngIf="votingPossible" (click)="downvote()" [disabled]="matrix.vote==0">⬇️</button>
+  <button class="vote-button" *ngIf="votingPossible" (click)="upvote()">👍</button>
+  <button class="vote-button" *ngIf="votingPossible" (click)="downvote()" [disabled]="matrix.vote==0">👎</button>
   </div>
 </div>
