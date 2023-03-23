@@ -18,3 +18,11 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
+
+button:hover {
+  background: linear-gradient(55.49deg, #751AE5 50.02%, #9E6BF5 80.4%, #0D37FC 220.54%);
+}
+
+button:active {
+  transform: translateY(2px);
+}

@@ -50,8 +50,24 @@
   background: #FFFFFF;
 }
 
+.possible-input-button:hover {
+  background-color: #f4f4f4;
+}
+
+.possible-input-button:active {
+  transform: translateY(2px);
+}
+
 .vote-button {
   background: #FFFFFF;
+}
+
+.vote-button:hover {
+  background-color: #f4f4f4;
+}
+
+.vote-button:active {
+  transform: translateY(2px);
 }
 
 .timer {

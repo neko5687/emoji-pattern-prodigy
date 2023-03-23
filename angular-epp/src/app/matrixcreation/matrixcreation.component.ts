@@ -27,16 +27,14 @@ interface Matrix {
 })
 export class MatrixcreationComponent implements OnInit{
 
+  addMatrixCreationString: string = "??";
+  emojis : string = "";
+  possibleInput: string[] = ['🐵', '🐶', '🐺', '🦊', '🐱', '🐯', '🦁', '🐮', '🐷', '🐗', '🐭', '🐹', '🐰', '🐻', '🐨', '🐼', '🦘', '🦡', '🐾', '🦃', '🐔', '🐦', '🐤', '🐣', '🐥', '🦆', '🦢', '🦉', '🦚', '🦜', '🐸', '🐊', '🐢', '🦎', '🐍', '🐲', '🐉', '🦕', '🦖', '🦈', '🐬', '🐳', '🐋', '🐟', '🐠', '🐡', '🦐', '🦞', '🦀', '🐚', '🐌', '🦋', '🐛', '🐜', '🐝', '🐞', '🦟', '🦗'];
+  hint: string = "?";
+
+
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
   }
   ngOnInit(): void {
   }
-
-
-  validateMatrixString(input: string): boolean {
-    const emojiPattern = /[\p{So}\p{Sk}]/u;
-    return input.match(emojiPattern)?.join("") === input;
-  }
-
-
 }
