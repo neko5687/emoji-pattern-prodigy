@@ -20,7 +20,7 @@ public class TestDataController {
     public @ResponseBody String createTestData() {
         MatrixUser creator = matrixUserRepository.findByName("Admin");
         matrixRepository.save(new Matrix(
-                "🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋️", "Hearts and Butterflies", creator, 1, "Which one has wings?"));
+                "🦋💙🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋️", "Hearts and Butterflies", creator, 1, "Which one has wings?"));
         matrixRepository.save(new Matrix(
                   "🦕🐘🦒🐘🦒🐘🦕🦒🐘🦒🐘🦒🦕🐘🦒🐘🦒🐘🦕🦒🐘🦒🐘🦒🦕", "Animal Parade", creator, 1, "Who is slowest?"));
         matrixRepository.save(new Matrix(
