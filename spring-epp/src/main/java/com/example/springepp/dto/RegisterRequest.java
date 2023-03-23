@@ -1,4 +1,4 @@
-package com.example.springepp;
+package com.example.springepp.dto;
 
 
 import lombok.AllArgsConstructor;

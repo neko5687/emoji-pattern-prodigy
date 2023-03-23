@@ -1,11 +1,12 @@
-package com.example.springepp;
+package com.example.springepp.user;
 
+import com.example.springepp.security.PasswordEncoderConfig;
+import com.example.springepp.dto.RegisterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 @Import(PasswordEncoderConfig.class)
 @Service

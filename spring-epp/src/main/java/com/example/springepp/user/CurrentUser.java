@@ -1,4 +1,4 @@
-package com.example.springepp;
+package com.example.springepp.user;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

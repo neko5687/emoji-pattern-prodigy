@@ -1,11 +1,12 @@
-package com.example.springepp;
+package com.example.springepp.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
-public class PointsDTO {
+@Data
+public class MatrixUserDTO {
+    String password;
     String userName;
-    int points;
+
 }
