@@ -1,5 +1,7 @@
 package com.example.springepp;
 
+import com.example.springepp.user.MatrixUser;
+import com.example.springepp.user.MatrixUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

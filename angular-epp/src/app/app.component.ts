@@ -9,9 +9,12 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AppComponent {
   title = 'angular-epp';
-isLoggedIn: boolean;
+  isLoggedIn: boolean;
+
+
   constructor(private router: Router, private http: HttpClient) {
-    this.isLoggedIn = sessionStorage.getItem("token")?.length !=0
+    this.isLoggedIn = sessionStorage.getItem("token")?.length != 0;
+
   }
 
   logout() {

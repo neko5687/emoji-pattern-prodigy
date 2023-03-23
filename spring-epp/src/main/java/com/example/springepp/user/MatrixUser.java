@@ -1,5 +1,6 @@
-package com.example.springepp;
+package com.example.springepp.user;
 
+import com.example.springepp.Matrix;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
