@@ -15,9 +15,11 @@ import java.util.Optional;
 public class MatrixController {
 
     private MatrixRepository matrixRepository;
+    private MatrixUserRepository matrixUserRepository;
 
     @Autowired
-    public MatrixController(MatrixRepository matrixRepository) {
+    public MatrixController(MatrixRepository matrixRepository, MatrixUserRepository matrixUserRepository) {
+        this.matrixUserRepository = matrixUserRepository;
         this.matrixRepository = matrixRepository;
     }
 
@@ -51,5 +53,12 @@ public class MatrixController {
         Matrix matrix = matrixRepository.findById(matrixVoteDTO.id).get();
         matrix.setVote(matrixVoteDTO.vote);
         matrixRepository.save(matrix);
+    }
+
+    @PostMapping("/api/points")
+    public void savePoints(@RequestBody PointsDTO pointsDTO) {
+        MatrixUser user = matrixUserRepository.findByName(pointsDTO.userName);
+        user.setPoints(user.getPoints()+ pointsDTO.points);
+        matrixUserRepository.save(user);
     }
 }

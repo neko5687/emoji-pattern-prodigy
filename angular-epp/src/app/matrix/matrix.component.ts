@@ -29,6 +29,11 @@ interface MatrixDTOVote {
   vote: number
 }
 
+interface PointsDTO {
+  points: number,
+  userName: string | null
+}
+
 @Component({
   selector: 'app-matrix',
   templateUrl: './matrix.component.html',
@@ -57,7 +62,11 @@ export class MatrixComponent implements OnInit {
   };
   intervalId: any;
   remainingSeconds: any = 15;
+  solvingSeconds: number = 0;
   votingPossible: boolean = false;
+
+  points: number = 0;
+  maximumPoints: number = 0;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
   }
@@ -71,7 +80,10 @@ export class MatrixComponent implements OnInit {
       this.matrixId = Number(idParam);
     }
     this.http.get<MatrixDTO>('http://localhost:8080/api/matrices/' + this.matrixId).subscribe(
-      result => this.matrix = this.convertDTOtoMatrix(result),
+      result => {
+        this.matrix = this.convertDTOtoMatrix(result);
+        this.maximumPoints = 200 * result.difficulty
+      },
       error => this.router.navigate(["/error"])
     );
   }
@@ -92,6 +104,7 @@ export class MatrixComponent implements OnInit {
 
 
   startSolving() {
+    this.points = this.maximumPoints;
     this.getPossibleInput();
     this.startTimer()
     this.isSolving = true;
@@ -103,18 +116,33 @@ export class MatrixComponent implements OnInit {
 
 
   endSolving() {
-    this.afterSolving = true;
-    this.hintVisible = false;
-    this.votingPossible = true;
+    this.stopTimer();
     if (this.matrixSolution === this.matrix.matrix[24]) {
       this.isCorrect = true;
     }
+    if (!this.isCorrect || this.remainingSeconds == 0) {
+      this.points = 0;
+    }
+    this.solvingSeconds = 15 - this.remainingSeconds;
+    this.afterSolving = true;
+    this.hintVisible = false;
+    this.votingPossible = true;
+    let payload: PointsDTO = {
+      userName: sessionStorage.getItem("userName"),
+      points: this.points
+    }
+    this.http.post('http://localhost:8080/api/points', payload).subscribe()
+  }
+
+  stopTimer() {
+    clearInterval(this.intervalId);
   }
 
   startTimer() {
     let seconds: number;
     this.intervalId = setInterval(() => {
       this.remainingSeconds--;
+      this.points = this.points - 10;
       if (this.remainingSeconds < 10) {
         this.remainingSeconds = "0" + this.remainingSeconds;
         if (this.remainingSeconds === "0" + 0) {
@@ -127,18 +155,19 @@ export class MatrixComponent implements OnInit {
 
   showHint() {
     this.hintVisible = true;
+    this.points = this.points - 50;
   }
 
   upvote() {
     this.votingPossible = false;
     let payload: MatrixDTOVote = {id: this.matrix.id, vote: (this.matrix.vote + 1)}
-    this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe(()=> location.reload());
+    this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe(() => location.reload());
   }
 
 
   downvote() {
     this.votingPossible = false;
     let payload: MatrixDTOVote = {id: this.matrix.id, vote: (this.matrix.vote - 1)}
-    this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe(()=> location.reload());
+    this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe(() => location.reload());
   }
 }

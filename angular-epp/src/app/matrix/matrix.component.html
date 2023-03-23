@@ -12,17 +12,17 @@
       <div>❤️ {{matrix.vote}}</div>
       <div>
         <div class="timer" *ngIf="isSolving&&!afterSolving">00:{{remainingSeconds}}</div>
-        <div *ngIf="afterSolving&&isCorrect">Correct!</div>
-        <div *ngIf="afterSolving&&!isCorrect">False!</div>
       </div>
       <div>{{matrix.difficulty}}</div>
     </div>
+    <div *ngIf="afterSolving">Your answer was {{isCorrect?"correct":"false"}}! <br> It took you {{solvingSeconds}} seconds
+      and you gained {{this.points}} points.</div>
     <div class="possible-input" *ngIf="isSolving&&!afterSolving">
       <div *ngFor="let emoji of possibleInput">
         <button class="possible-input-button" (click)="matrixSolution = emoji">{{emoji}}</button>
       </div>
     </div>
-    <button *ngIf="!isSolving" (click)="startSolving()">Solve</button>
+    <button *ngIf="!isSolving && !afterSolving" (click)="startSolving()">Solve</button>
     <button *ngIf="isSolving&&!afterSolving" (click)="endSolving()">Submit</button>
 
 
