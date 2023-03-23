@@ -1,0 +1,35 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.creation-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.possible-input {
+  display: flex;
+  justify-content: center;
+}
+
+.possible-input-button {
+  background: #FFFFFF;
+}
+
+.possible-input-button:hover {
+  background-color: #f4f4f4;
+}
+
+.possible-input-button:active {
+  transform: translateY(2px);
+}
+
+.scrollable-div {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 5px;
+  max-height: 200px;
+  width: fit-content;
+  overflow: auto;
+}
