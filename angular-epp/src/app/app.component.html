@@ -19,9 +19,10 @@
     </div>
   </div>
   <div>
-    <button routerLink="login">Login</button>
-    <button (click)="logout()">Logout</button>
+    <button *ngIf="!isLoggedIn" routerLink="login">Login</button>
+    <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
   </div>
 </div>
 
 <router-outlet></router-outlet>
+
