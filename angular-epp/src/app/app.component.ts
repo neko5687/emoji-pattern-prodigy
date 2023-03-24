@@ -13,7 +13,12 @@ export class AppComponent {
 
 
   constructor(private router: Router, private http: HttpClient) {
-    this.isLoggedIn = sessionStorage.getItem("token")?.length != 0;
+    if (sessionStorage.getItem("token") == null) {
+      this.isLoggedIn = false;
+    }
+    else {
+      this.isLoggedIn = sessionStorage.getItem("token")?.length != 0;
+    }
 
   }
 
