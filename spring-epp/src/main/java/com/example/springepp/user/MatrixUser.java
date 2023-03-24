@@ -19,7 +19,7 @@ public class MatrixUser {
     private String name;
     private String password;
     private String email;
-    @OneToMany
+    @ManyToMany
     List<Matrix> solvedMatrices;
     int points;
     boolean isAdmin;
