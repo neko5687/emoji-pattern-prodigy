@@ -19,7 +19,7 @@ export class MatrixcreationComponent implements OnInit {
 
   emojis: string[] = ["?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?"];
   possibleInput: string[] = ['🐵', '🐶', '🐺', '🦊', '🐱', '🐯', '🦁', '🐮', '🐷', '🐗', '🐭', '🐹', '🐰', '🐻', '🐨', '🐼', '🦘', '🦡', '🐾', '🦃', '🐔', '🐦', '🐤', '🐣', '🐥', '🦆', '🦢', '🦉', '🦚', '🦜', '🐸', '🐊', '🐢', '🦎', '🐍', '🐲', '🐉', '🦕', '🦖', '🦈', '🐬', '🐳', '🐋', '🐟', '🐠', '🐡', '🦐', '🦞', '🦀', '🐚', '🐌', '🦋', '🐛', '🐜', '🐝', '🐞', '🦟', '🦗'];
-  hint: string = "?";
+  hint: string = "";
   chili: string = "🌶️";
 
   index: number = 0;
@@ -33,6 +33,7 @@ export class MatrixcreationComponent implements OnInit {
     hint: ""
   }
   success: boolean = false;
+  count: number = 25;
 
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
@@ -61,5 +62,18 @@ export class MatrixcreationComponent implements OnInit {
 
   isValidInput(): boolean {
     return this.title.length != 0 && this.difficulty != 0 && this.hint.length != 0 && !this.emojis.includes("?");
+  }
+
+  emojiCounter() {
+    this.count = this.emojis.filter(str => str === "?").length;
+  }
+
+  addAndCount(emoji: string) {
+    this.addEmojiToMatrix(emoji)
+    this.emojiCounter()
+  }
+
+  hasDifficulty() : boolean {
+    return this.difficulty !== 0;
   }
 }

@@ -1,4 +1,14 @@
+div, p {
+  font-family: sans-serif;
+}
+
 .main-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.possible-input-container {
   display: flex;
   justify-content: center;
 }
@@ -6,6 +16,37 @@
 .creation-container {
   display: flex;
   flex-direction: column;
+}
+
+.possible-emojis-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #751AE5;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background: #FFFFFF;
+}
+
+.matrix-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  padding: 10px;
+  width: fit-content;
+}
+
+.emojis-count-container {
+  font-size: smaller;
 }
 
 .possible-input {
@@ -25,6 +66,42 @@
   transform: translateY(2px);
 }
 
+.creation-item {
+  background: #FFFFFF;
+}
+
+.creation-title {
+  display: flex;
+  justify-content: normal;
+  color: #751AE5;
+  font-weight: bold;
+  font-size: large;
+}
+
+.creation-hint {
+  display: flex;
+  justify-content: normal;
+  color: #751AE5;
+  font-weight: bold;
+  font-size: medium;
+  margin: 10px 0 10px 0;
+}
+
+.creation-difficulty {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #751AE5;
+  font-weight: bold;
+  font-size: medium;
+  margin: 0 0 10px 0;
+}
+
+.button_difficulty {
+  background: #FFFFFF;
+  margin: 0 5px 0 5px;
+}
+
 .scrollable-div {
   display: grid;
   grid-template-columns: repeat(4, auto);
@@ -35,5 +112,43 @@
 }
 
 .save-button:disabled {
+  color: darkgray;
+  background: lightgray;
   pointer-events: none;
+}
+
+input[type=text] {
+  font-family: sans-serif;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #751AE5;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.warning {
+  color: orangered;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+  color: #751AE5;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: orangered;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: orangered;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: orangered;
+}
+
+.warning-border {
+color: orangered;
 }
