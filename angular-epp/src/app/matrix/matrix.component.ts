@@ -103,7 +103,6 @@ export class MatrixComponent implements OnInit {
       result => {
         this.solvedMatrices = result;
         this.alreadySolved = this.solvedMatrices.includes(this.matrix.id);
-        console.log(this.alreadySolved)
       }
     );
   }
