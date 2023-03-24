@@ -34,6 +34,11 @@ interface PointsDTO {
   userName: string | null
 }
 
+interface MatrixUserDTO {
+  name: string | null,
+  solved: string | null
+}
+
 @Component({
   selector: 'app-matrix',
   templateUrl: './matrix.component.html',
@@ -69,10 +74,12 @@ export class MatrixComponent implements OnInit {
   maximumPoints: number = 0;
   userName: string | null;
   userPoints: string | null;
+  solvedMatrices: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.userName = sessionStorage.getItem("userName");
     this.userPoints = sessionStorage.getItem("points");
+    this.solvedMatrices = sessionStorage.getItem("solved");
   }
 
   ngOnInit(): void {
@@ -108,10 +115,16 @@ export class MatrixComponent implements OnInit {
 
 
   startSolving() {
+    this.solvedMatrices = JSON.parse(sessionStorage.getItem('solvedMatrices') || '[]');
+    if (this.solvedMatrices.includes(this.matrixId)) {
+      // console.log("you already solved it")
+      return;
+    }
     this.points = this.maximumPoints;
     this.getPossibleInput();
     this.startTimer()
     this.isSolving = true;
+
   }
 
   getPossibleInput() {
@@ -136,9 +149,11 @@ export class MatrixComponent implements OnInit {
       points: this.points
     }
     this.http.post('http://localhost:8080/api/points', payload).subscribe()
-    let actualpoints = Number(sessionStorage.getItem("points"))+this.points;
+    let actualpoints = Number(sessionStorage.getItem("points")) + this.points;
     sessionStorage.setItem("points", String(actualpoints));
     this.userPoints = String(actualpoints);
+
+    sessionStorage.setItem('solvedMatrices', JSON.stringify([...(this.solvedMatrices), this.matrixId]));
   }
 
   stopTimer() {
