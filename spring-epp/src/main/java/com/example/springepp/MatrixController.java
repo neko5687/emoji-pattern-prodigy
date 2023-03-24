@@ -1,9 +1,6 @@
 package com.example.springepp;
 
-import com.example.springepp.dto.MatrixCreationDTO;
-import com.example.springepp.dto.MatrixDTO;
-import com.example.springepp.dto.MatrixVoteDTO;
-import com.example.springepp.dto.SolvedDTO;
+import com.example.springepp.dto.*;
 import com.example.springepp.user.MatrixUser;
 import com.example.springepp.user.MatrixUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,8 +61,8 @@ public class MatrixController {
     @PostMapping("/api/solved")
     public void savePoints(@RequestBody SolvedDTO solvedDTO) {
         MatrixUser user = matrixUserRepository.findByName(solvedDTO.getUserName());
-        user.setPoints(user.getPoints()+ solvedDTO.getPoints());
-        if(!user.getSolvedMatrices().contains(matrixRepository.findById((long) solvedDTO.getMatrixId()).get())) {
+        user.setPoints(user.getPoints() + solvedDTO.getPoints());
+        if (!user.getSolvedMatrices().contains(matrixRepository.findById((long) solvedDTO.getMatrixId()).get())) {
             user.getSolvedMatrices().add(matrixRepository.findById((long) solvedDTO.getMatrixId()).get());
         }
         matrixUserRepository.save(user);
@@ -75,20 +72,31 @@ public class MatrixController {
     public ArrayList<Long> getSolved(@PathVariable String userName) {
         MatrixUser user = matrixUserRepository.findByName(userName);
         ArrayList<Long> response = new ArrayList<>();
-      for (Matrix solvedMatrix : user.getSolvedMatrices()){
-          response.add(solvedMatrix.getId());
-      }
-      return response;
+        for (Matrix solvedMatrix : user.getSolvedMatrices()) {
+            response.add(solvedMatrix.getId());
+        }
+        return response;
     }
-
 
 
     @PostMapping("api/createMatrix")
     public void createMatrix(@RequestBody MatrixCreationDTO matrixCreationDTO) {
         MatrixUser matrixUser = matrixUserRepository.findByName(matrixCreationDTO.getCreatorName());
         Matrix matrix = new Matrix(matrixCreationDTO.getMatrix(), matrixCreationDTO.getTitle(), matrixUser,
-                matrixCreationDTO.getDifficulty(),matrixCreationDTO.getHint());
+                matrixCreationDTO.getDifficulty(), matrixCreationDTO.getHint());
         matrixRepository.save(matrix);
+    }
+
+    @GetMapping("api/highscore")
+    public List<MatrixUserDTO> createMatrix() {
+        List<MatrixUserDTO> userList = new ArrayList<>();
+        for (MatrixUser user : matrixUserRepository.findAll()) {
+            MatrixUserDTO userDTO = new MatrixUserDTO();
+            userDTO.setUserName(user.getName());
+            userDTO.setPoints(user.getPoints());
+            userList.add(userDTO);
+        }
+        return userList;
     }
 
 }
