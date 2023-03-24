@@ -20,7 +20,7 @@ public class MatrixUser {
     private String password;
     private String email;
     @OneToMany
-    List<Matrix> votedMatrices;
+    List<Matrix> solvedMatrices;
     int points;
     boolean isAdmin;
 
@@ -31,7 +31,7 @@ public class MatrixUser {
     public MatrixUser(String name, String password, String email) {
         this.name = name;
         this.password = password;
-        this.votedMatrices = new ArrayList<>();
+        this.solvedMatrices = new ArrayList<>();
         this.points = 0;
         this.isAdmin = false;
         this.email = email;

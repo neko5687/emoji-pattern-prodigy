@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 
 interface MatrixDTO {
   id: number,
@@ -29,9 +29,10 @@ interface MatrixDTOVote {
   vote: number
 }
 
-interface PointsDTO {
+interface SolvedDTO {
   points: number,
-  userName: string | null
+  userName: string | null,
+  matrixId: number
 }
 
 interface MatrixUserDTO {
@@ -79,7 +80,6 @@ export class MatrixComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.userName = sessionStorage.getItem("userName");
     this.userPoints = sessionStorage.getItem("points");
-    this.solvedMatrices = sessionStorage.getItem("solved");
   }
 
   ngOnInit(): void {
@@ -96,6 +96,11 @@ export class MatrixComponent implements OnInit {
         this.maximumPoints = 200 * result.difficulty
       },
       error => this.router.navigate(["/error"])
+    );
+    let params= new HttpParams();
+    params= params.append("userName",this.userName ? this.userName: "unknown");
+    this.http.get<number[]>('http://localhost:8080/api/solvedmatrices/', {params:params}).subscribe(
+      result => this.solvedMatrices = result
     );
   }
 
@@ -117,7 +122,6 @@ export class MatrixComponent implements OnInit {
   startSolving() {
     this.solvedMatrices = JSON.parse(sessionStorage.getItem('solvedMatrices') || '[]');
     if (this.solvedMatrices.includes(this.matrixId)) {
-      // console.log("you already solved it")
       return;
     }
     this.points = this.maximumPoints;
@@ -144,16 +148,16 @@ export class MatrixComponent implements OnInit {
     this.afterSolving = true;
     this.hintVisible = false;
     this.votingPossible = true;
-    let payload: PointsDTO = {
+    let payload: SolvedDTO = {
       userName: sessionStorage.getItem("userName"),
-      points: this.points
+      points: this.points,
+      matrixId: this.matrixId
     }
-    this.http.post('http://localhost:8080/api/points', payload).subscribe()
+    this.http.post('http://localhost:8080/api/solved', payload).subscribe()
     let actualpoints = Number(sessionStorage.getItem("points")) + this.points;
     sessionStorage.setItem("points", String(actualpoints));
     this.userPoints = String(actualpoints);
 
-    sessionStorage.setItem('solvedMatrices', JSON.stringify([...(this.solvedMatrices), this.matrixId]));
   }
 
   stopTimer() {

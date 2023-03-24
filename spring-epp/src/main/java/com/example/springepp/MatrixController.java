@@ -3,7 +3,7 @@ package com.example.springepp;
 import com.example.springepp.dto.MatrixCreationDTO;
 import com.example.springepp.dto.MatrixDTO;
 import com.example.springepp.dto.MatrixVoteDTO;
-import com.example.springepp.dto.PointsDTO;
+import com.example.springepp.dto.SolvedDTO;
 import com.example.springepp.user.MatrixUser;
 import com.example.springepp.user.MatrixUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -60,12 +61,26 @@ public class MatrixController {
         matrixRepository.save(matrix);
     }
 
-    @PostMapping("/api/points")
-    public void savePoints(@RequestBody PointsDTO pointsDTO) {
-        MatrixUser user = matrixUserRepository.findByName(pointsDTO.getUserName());
-        user.setPoints(user.getPoints()+ pointsDTO.getPoints());
+    @PostMapping("/api/solved")
+    public void savePoints(@RequestBody SolvedDTO solvedDTO) {
+        MatrixUser user = matrixUserRepository.findByName(solvedDTO.getUserName());
+        user.setPoints(user.getPoints()+ solvedDTO.getPoints());
+        user.getSolvedMatrices().add(matrixRepository.findById((long) solvedDTO.getMatrixId()).get());
         matrixUserRepository.save(user);
     }
+
+    @GetMapping("/api/solvedmatrices")
+    public ArrayList<Long> getSolved(@RequestParam String userName) {
+        MatrixUser user = matrixUserRepository.findByName(userName);
+
+        ArrayList<Long> response = new ArrayList<>();
+      for (Matrix solvedMatrix : user.getSolvedMatrices()){
+          response.add(solvedMatrix.getId());
+      }
+      return response;
+    }
+
+
 
     @PostMapping("api/createMatrix")
     public void createMatrix(@RequestBody MatrixCreationDTO matrixCreationDTO) {

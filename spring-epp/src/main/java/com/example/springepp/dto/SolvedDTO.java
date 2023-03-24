@@ -5,7 +5,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class PointsDTO {
+public class SolvedDTO {
     String userName;
     int points;
+    int matrixId;
 }
