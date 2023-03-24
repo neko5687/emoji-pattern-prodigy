@@ -8,7 +8,7 @@
           <span *ngIf="i === 24">{{matrixSolution}}</span>
         </div>
 
-          <div  *ngIf="!isSolving" >
+          <div class="matrix-item" *ngIf="!isSolving" >
             <span *ngIf="i < 3">{{emoji}}</span>
             <span *ngIf="i >= 3 && i<24">  <img class="matrix-item" src="assets/arrow-circle.svg"
                                                 alt="Placeholder Arrow"></span>
