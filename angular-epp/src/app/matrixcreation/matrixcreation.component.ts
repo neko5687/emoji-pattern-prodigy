@@ -43,7 +43,7 @@ export class MatrixcreationComponent implements OnInit {
 
   addEmojiToMatrix(emoji: string) {
     this.emojis[this.index] = emoji;
-    this.index++;
+    this.index = (this.index % 24) + 1;
   }
 
   saveMatrix() {
