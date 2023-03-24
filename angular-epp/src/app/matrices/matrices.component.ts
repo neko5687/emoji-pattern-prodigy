@@ -45,7 +45,7 @@ export class MatricesComponent implements OnInit {
     const matrix: Matrix = {
       id: matrixDto.id,
       title: matrixDto.title,
-      matrix: matrixDto.matrix.match(/\p{Emoji}/gu) || [],
+      matrix: matrixDto.matrix.split(","),
       vote: matrixDto.vote,
       difficulty: "🌶️".repeat(matrixDto.difficulty),
       createdAt: matrixDto.createdAt,

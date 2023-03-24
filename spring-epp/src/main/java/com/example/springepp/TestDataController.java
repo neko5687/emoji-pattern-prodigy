@@ -22,29 +22,31 @@ public class TestDataController {
     public @ResponseBody String createTestData() {
         MatrixUser creator = matrixUserRepository.findByName("Admin");
         matrixRepository.save(new Matrix(
-                "🦋💙🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋❤️🦋️", "Hearts and Butterflies", creator, 1, "Which one has wings?"));
+                "🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋", "Hearts and Butterflies", creator, 1, "Which one has wings?"));
+
         matrixRepository.save(new Matrix(
-                  "🦕🐘🦒🐘🦒🐘🦕🦒🐘🦒🐘🦒🦕🐘🦒🐘🦒🐘🦕🦒🐘🦒🐘🦒🦕", "Animal Parade", creator, 1, "Who is slowest?"));
+                  "🦕,🐘,🦒,🐘,🦒,🐘,🦕,🦒,🐘,🦒,🐘,🦒,🦕,🐘,🦒,🐘,🦒,🐘,🦕,🦒,🐘,🦒,🐘,🦒,🦕", "Animal Parade", creator, 1, "Who is slowest?"));
         matrixRepository.save(new Matrix(
-                "🥒🥒🥒🥒❤️❤️🥒🥒🥒❤️❤️🥒❤️🥒❤️❤️❤️❤️🥒❤️❤️❤️❤️❤️❤️", "Pickle Love", creator, 2,"What do you always have with you?"));
+                "🥒,🥒,🥒,🥒,❤️,❤️,🥒,🥒,🥒,❤️,❤️,🥒,❤️,🥒,❤️,❤️,❤️,❤️,🥒,❤️,❤️,❤️,❤️,❤️,❤️", "Pickle Love", creator, 2,"What do you always have with you?"));
         matrixRepository.save(new Matrix(
-                "🐦❤️🐦🌳🪹🐦🐦❤️🪹🪺🐦🪺❤️🐦🥚🐦🪺🐣🥚🐦🐦🐣🐥🐦🦉", "False Spring", creator, 3,"What was in the egg?"));
+                "🐦,❤️,🐦,🌳,🪹,🐦,🐦,❤️,🪹,🪺,🐦,🪺,❤️,🐦,🥚,🐦,🪺,🐣,🥚,🐦,🐦,🐣,🐥,🐦,🦉", "False Spring", creator, 3,"What was in the egg?"));
         matrixRepository.save(new Matrix(
-                "🍕🍔🌭🍟🍨🍕🍔🌭🍨🍨🍕🍨🍨🍨🍕🍨🍨🍨🍨🍨🍨🍨🍨🍨🍨", "Food", creator, 1,"You always need more and more!"));
+                "🍕,🍔,🌭,🍟,🍨,🍕,🍔,🌭,🍨,🍨,🍕,🍨,🍨,🍨,🍕,🍨,🍨,🍨,🍨,🍨,🍨,🍨,🍨,🍨,🍨", "Food", creator, 1,"You always need more and more!"));
         matrixRepository.save(new Matrix(
-                "🌞🌞🌞😎🏖️🌞🌞😎🏖️🍹🌞😎🏖️🍹🍹😎🏖️🍹🍹🍹🌅😎🍹🍹🤢", "Vacation", creator, 2,"How do you feel after 8 cocktails?"));
+                "🌞,🌞,🌞,😎,🏖️,🌞,🌞,😎,🏖️,🍹,🌞,😎,🏖️,🍹,🍹,😎,🏖️,🍹,🍹,🍹,🌅,😎,🍹,🍹,🤢", "Vacation", creator, 2,"How do you feel after 8 cocktails?"));
         matrixRepository.save(new Matrix(
-                "🥨🥨🍗🍺🍖🥨🍗🍗🍺🍖🥨🍗🍺🍺🍖🥨🍗🍺🍖🍖🥨🥨🍗🍺🍖", "Bavaria", creator, 2, "Restart Oktoberfest-day."));
+                "🥨,🥨,🍗,🍺,🍖,🥨,🍗,🍗,🍺,🍖,🥨,🍗,🍺,🍺,🍖,🥨,🍗,🍺,🍖,🍖,🥨,🥨,🍗,🍺,🍖", "Bavaria", creator, 2, "Restart Oktoberfest-day."));
         matrixRepository.save(new Matrix(
-                "🎈🎈🎈🎈🎈🎈🎈🎉🎈🎈🎈🎈🎉🎉🎈🎈🎉🎉🎉🎈🎈🎉🎉🎉🎉", "Ballon", creator, 1, "More party"));
+                "🎈,🎈,🎈,🎈,🎈,🎈,🎈,🎉,🎈,🎈,🎈,🎈,🎉,🎉,🎈,🎈,🎉,🎉,🎉,🎈,🎈,🎉,🎉,🎉,🎉", "Ballon", creator, 1, "More party"));
         matrixRepository.save(new Matrix(
-                "😭😂😭😂😭😂😭😂😭😂😭😂😭😂😭😂😭😂😭😂😭😂😭😂😭", "Laugh and Cry", creator, 1, "No woman no ...?"));
+                "😭,😂,😭,😂,😭,😂,😭,😂,😭,😂,😭,😂,😭,😂,😭,😂,😭,😂,😭,😂,😭,😂,😭,😂,😭", "Laugh and Cry", creator, 1, "No woman no ...?"));
         matrixRepository.save(new Matrix(
-                "🚗🚗🚓🚑🚒🚗🚓🚑🚒🚗🚓🚑🚒🚗🚗🚑🚒🚗🚗🚓🚒🚗🚗🚓🚑", "TatüTata", creator, 2,"Who is behind police?"));
+                "🚗,🚗,🚓,🚑,🚒,🚗,🚓,🚑,🚒,🚗,🚓,🚑,🚒,🚗,🚗,🚑,🚒,🚗,🚗,🚓,🚒,🚗,🚗,🚓,🚑", "TatüTata", creator, 2,"Who is behind police?"));
         matrixRepository.save(new Matrix(
-                  "🌑🌒🌓🌔🌕🌖🌗🌘🌑🌒🌓🌔🌕🌖🌗🌘🌑🌒🌓🌔🌕🌖🌗🌘🌑", "Moon", creator, 1,"Come to the dark side!"));
+                  "🌑,🌒,🌓,🌔,🌕,🌖,🌗,🌘,🌑,🌒,🌓,🌔,🌕,🌖,🌗,🌘,🌑,🌒,🌓,🌔,🌕,🌖,🌗,🌘,🌑", "Moon", creator, 1,"Come to the dark side!"));
         matrixRepository.save(new Matrix(
-                  "➡️➡️➡️➡️↩️↪️⬅️⬅️⬅️⬅️➡️➡️➡️➡️↩️↪️⬅️⬅️⬅️⬅️➡️➡️➡️➡️↩️", "arrow", creator, 2,"Follow row"));
+                  "➡️,➡️,➡️,➡️,↩️,↪️,⬅️,⬅️,⬅️,⬅️,➡️,➡️,➡️,➡️,↩️,↪️,⬅️,⬅️,⬅️,⬅️,➡️,➡️,➡️,➡️,↩️", "arrow", creator, 2,"Follow row"));
+
         return "Testdata creation worked";
     }
 }
