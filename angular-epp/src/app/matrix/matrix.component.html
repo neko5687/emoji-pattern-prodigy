@@ -23,8 +23,8 @@
         <button class="possible-input-button" (click)="matrixSolution = emoji">{{emoji}}</button>
       </div>
     </div>
-    <button *ngIf="!isSolving && !afterSolving&&!solvedMatrices.includes(matrix.id)" (click)="startSolving()">Solve</button>
-    <div *ngIf="!isSolving && !afterSolving&&solvedMatrices.includes(matrix.id)">You already solved this Matrix!</div>
+    <button *ngIf="!isSolving && !afterSolving &&!alreadySolved" (click)="startSolving()">Solve</button>
+    <div *ngIf="!isSolving && !afterSolving &&alreadySolved">You already solved this Matrix!</div>
     <button *ngIf="isSolving&&!afterSolving" (click)="endSolving()">Submit</button>
 
 

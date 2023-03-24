@@ -65,14 +65,15 @@ public class MatrixController {
     public void savePoints(@RequestBody SolvedDTO solvedDTO) {
         MatrixUser user = matrixUserRepository.findByName(solvedDTO.getUserName());
         user.setPoints(user.getPoints()+ solvedDTO.getPoints());
-        user.getSolvedMatrices().add(matrixRepository.findById((long) solvedDTO.getMatrixId()).get());
+        if(!user.getSolvedMatrices().contains(matrixRepository.findById((long) solvedDTO.getMatrixId()).get())) {
+            user.getSolvedMatrices().add(matrixRepository.findById((long) solvedDTO.getMatrixId()).get());
+        }
         matrixUserRepository.save(user);
     }
 
-    @GetMapping("/api/solvedmatrices")
-    public ArrayList<Long> getSolved(@RequestParam String userName) {
+    @GetMapping("/api/solvedmatrices/{userName}")
+    public ArrayList<Long> getSolved(@PathVariable String userName) {
         MatrixUser user = matrixUserRepository.findByName(userName);
-
         ArrayList<Long> response = new ArrayList<>();
       for (Matrix solvedMatrix : user.getSolvedMatrices()){
           response.add(solvedMatrix.getId());

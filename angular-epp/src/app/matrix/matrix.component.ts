@@ -71,11 +71,13 @@ export class MatrixComponent implements OnInit {
   solvingSeconds: number = 0;
   votingPossible: boolean = false;
 
+  alreadySolved: boolean = false;
+
   points: number = 0;
   maximumPoints: number = 0;
   userName: string | null;
   userPoints: string | null;
-  solvedMatrices: any;
+  solvedMatrices: number[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.userName = sessionStorage.getItem("userName");
@@ -97,10 +99,12 @@ export class MatrixComponent implements OnInit {
       },
       error => this.router.navigate(["/error"])
     );
-    let params= new HttpParams();
-    params= params.append("userName",this.userName ? this.userName: "unknown");
-    this.http.get<number[]>('http://localhost:8080/api/solvedmatrices/', {params:params}).subscribe(
-      result => this.solvedMatrices = result
+    this.http.get<number[]>('http://localhost:8080/api/solvedmatrices/' + this.userName).subscribe(
+      result => {
+        this.solvedMatrices = result;
+        this.alreadySolved = this.solvedMatrices.includes(this.matrix.id);
+        console.log(this.alreadySolved)
+      }
     );
   }
 
@@ -153,11 +157,12 @@ export class MatrixComponent implements OnInit {
       points: this.points,
       matrixId: this.matrixId
     }
-    this.http.post('http://localhost:8080/api/solved', payload).subscribe()
-    let actualpoints = Number(sessionStorage.getItem("points")) + this.points;
-    sessionStorage.setItem("points", String(actualpoints));
-    this.userPoints = String(actualpoints);
-
+    if (!this.alreadySolved) {
+      this.http.post('http://localhost:8080/api/solved', payload).subscribe()
+      let actualpoints = Number(sessionStorage.getItem("points")) + this.points;
+      sessionStorage.setItem("points", String(actualpoints));
+      this.userPoints = String(actualpoints);
+    }
   }
 
   stopTimer() {
