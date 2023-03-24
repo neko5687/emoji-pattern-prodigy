@@ -14,6 +14,7 @@ import {FormsModule} from "@angular/forms";
 import { RequestInterceptor } from './request.interceptor';
 import { MatrixcreationComponent } from './matrixcreation/matrixcreation.component';
 import { SignupComponent } from './signup/signup.component';
+import { HighscoreComponent } from './highscore/highscore.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SignupComponent } from './signup/signup.component';
     ErrorComponent,
     MatrixcreationComponent,
     ErrorComponent,
-    SignupComponent
+    SignupComponent,
+    HighscoreComponent
   ],
   imports: [
     BrowserModule,

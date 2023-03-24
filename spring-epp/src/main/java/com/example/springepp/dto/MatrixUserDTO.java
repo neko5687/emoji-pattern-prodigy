@@ -9,4 +9,6 @@ public class MatrixUserDTO {
     String password;
     String userName;
 
+    int points;
+
 }
