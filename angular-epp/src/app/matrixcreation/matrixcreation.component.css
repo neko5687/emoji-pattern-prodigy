@@ -33,3 +33,7 @@
   width: fit-content;
   overflow: auto;
 }
+
+.save-button:disabled {
+  pointer-events: none;
+}

@@ -2,32 +2,30 @@
   <div class="creation-container">
     <div class="card-container">
       <div class="matrix-container">
+        <div><input type="text" [(ngModel)]="title"></div>
         <div *ngFor="let emoji of emojis; let i = index">
-          <div class="matrix-item">
-          </div>
+          <button [style.border]="this.index == i ? '1px solid black' : 'none'" (click)="this.index = i"
+                  class="matrix-item"> {{emoji}}
+          </button>
         </div>
       </div>
-      <div class="card-basic-info">
-        <div>❤️</div>
-        <div>Chilly</div>
-      </div>
-      <button *ngIf="true">Solve</button>
-      <div *ngIf="true"></div>
     </div>
     <div>
-      <span *ngIf="true">{{addMatrixCreationString}}</span>
-      <span *ngIf="true">{{hint}}</span>
+      <input type="text" [(ngModel)]="hint">
     </div>
     <div>
-      <button>{{chili}}️</button>
-      <button>{{chili}}{{chili}}</button>
-      <button>{{chili}}{{chili}}{{chili}}</button>
+      <button (click)="this.difficulty = 1">{{chili}}️</button>
+      <button (click)="this.difficulty = 2">{{chili}}{{chili}}</button>
+      <button (click)="this.difficulty = 3">{{chili}}{{chili}}{{chili}}</button>
     </div>
+    <button class="save-button" [disabled]="!isValidInput()" (click)="saveMatrix()">Save Matrix
+    </button>
     <div class="possible-input scrollable-div">
       <div *ngFor="let emoji of possibleInput">
-        <button class="possible-input-button" (click)="addMatrixCreationString = emoji">{{emoji}}</button>
+        <button class="possible-input-button" (click)=addEmojiToMatrix(emoji)>{{emoji}}</button>
       </div>
     </div>
   </div>
 </div>
+<div *ngIf="success"> Your Matrix was saved!</div>
 

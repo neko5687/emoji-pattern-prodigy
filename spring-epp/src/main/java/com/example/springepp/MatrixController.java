@@ -1,5 +1,6 @@
 package com.example.springepp;
 
+import com.example.springepp.dto.MatrixCreationDTO;
 import com.example.springepp.dto.MatrixDTO;
 import com.example.springepp.dto.MatrixVoteDTO;
 import com.example.springepp.dto.PointsDTO;
@@ -65,4 +66,13 @@ public class MatrixController {
         user.setPoints(user.getPoints()+ pointsDTO.getPoints());
         matrixUserRepository.save(user);
     }
+
+    @PostMapping("api/createMatrix")
+    public void createMatrix(@RequestBody MatrixCreationDTO matrixCreationDTO) {
+        MatrixUser matrixUser = matrixUserRepository.findByName(matrixCreationDTO.getCreatorName());
+        Matrix matrix = new Matrix(matrixCreationDTO.getMatrix(), matrixCreationDTO.getTitle(), matrixUser,
+                matrixCreationDTO.getDifficulty(),matrixCreationDTO.getHint());
+        matrixRepository.save(matrix);
+    }
+
 }
