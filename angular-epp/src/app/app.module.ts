@@ -16,6 +16,7 @@ import { MatrixcreationComponent } from './matrixcreation/matrixcreation.compone
 import { SignupComponent } from './signup/signup.component';
 import { HighscoreComponent } from './highscore/highscore.component';
 import {ModeToggleModule} from "./mode-toggle/mode-toggle.module";
+import { RulesComponent } from './rules/rules.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {ModeToggleModule} from "./mode-toggle/mode-toggle.module";
     MatrixcreationComponent,
     ErrorComponent,
     SignupComponent,
-    HighscoreComponent
+    HighscoreComponent,
+    RulesComponent
   ],
   imports: [
     BrowserModule,

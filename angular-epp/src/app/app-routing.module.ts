@@ -11,6 +11,7 @@ import {MatrixcreationComponent} from "./matrixcreation/matrixcreation.component
 
 import {SignupComponent} from "./signup/signup.component";
 import {HighscoreComponent} from "./highscore/highscore.component";
+import {RulesComponent} from "./rules/rules.component";
 
 const routes: Routes = [
   {path:"", pathMatch:"full", redirectTo:"matrices"},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'matrices/:id', component: MatrixComponent, canActivate: [AuthenticationGuard]},
   {path: 'highscore', component: HighscoreComponent, canActivate: [AuthenticationGuard]},
   {path: 'algorithmic', component: AlgorithmicThinkingComponent},
+  {path:'rules', component: RulesComponent},
   {path: "**", component: ErrorComponent}
 ];
 
