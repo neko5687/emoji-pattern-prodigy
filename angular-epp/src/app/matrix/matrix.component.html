@@ -51,7 +51,7 @@
     <button *ngIf="isSolving&&!afterSolving" (click)="endSolving()">Submit</button>
   </div>
   <div class="card-footer">
-    <button class="back-button">back</button>
+    <button [routerLink]="'/matrices'" class="back-button">back</button>
     <div class="voting-container">
       <div *ngIf="afterSolving">❤️</div>
       <button class="vote-button" *ngIf="votingPossible" (click)="upvote()">👍</button>
