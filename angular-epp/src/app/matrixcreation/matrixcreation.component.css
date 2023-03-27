@@ -2,15 +2,27 @@ div, p {
   font-family: sans-serif;
 }
 
+.center-text {
+  margin-top: 10px;
+  text-align: center;
+  color: var(--titleColor);
+}
+
+.main-title {
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: lighter;
+  color: var(--titleColor);
+}
+
+.bold {
+  font-weight: 900;
+}
+
 .main-container {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-}
-
-.possible-input-container {
-  display: flex;
-  justify-content: center;
 }
 
 .creation-container {
@@ -20,7 +32,17 @@ div, p {
 
 .possible-emojis-container {
   display: flex;
+}
+
+.possible-input-container {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.possible-input-title {
+  color: var(--titleColor);
+  margin-bottom: 20px;
 }
 
 .card-container {
@@ -30,11 +52,11 @@ div, p {
   width: fit-content;
   border-width: 1px;
   border-style: solid;
-  border-color: #751AE5;
+  border-color: var(--borderColor);
   padding: 10px;
   margin-top: 10px;
   border-radius: 10px;
-  background: #FFFFFF;
+  background: var(--cardColor);
 }
 
 .matrix-container {
@@ -55,11 +77,11 @@ div, p {
 }
 
 .possible-input-button {
-  background: #FFFFFF;
+  background: var(--cardColor);
 }
 
 .possible-input-button:hover {
-  background-color: #f4f4f4;
+  background-color: var(--backgroundColor);
 }
 
 .possible-input-button:active {
@@ -67,53 +89,69 @@ div, p {
 }
 
 .creation-item {
-  background: #FFFFFF;
+  background: var(--backgroundColor);
+  color: var(--borderColor);
+  min-width: 52px;
+  max-width: 52px;
+  min-height: 42px;
+  max-height: 42px;
+  padding: 0;
+}
+
+.creation-item:hover {
+  background-color: var(--cardColor);
 }
 
 .creation-title {
   display: flex;
   justify-content: normal;
-  color: #751AE5;
+  color: var(--titleColor);
   font-weight: bold;
-  font-size: large;
+  font-size: medium;
+  margin: 15px 0 0 0;
 }
 
 .creation-hint {
   display: flex;
   justify-content: normal;
-  color: #751AE5;
+  color: var(--titleColor);
   font-weight: bold;
   font-size: medium;
-  margin: 10px 0 10px 0;
+  margin: 15px 0 0 0;
 }
 
 .creation-difficulty {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  color: #751AE5;
+  color: var(--titleColor);
   font-weight: bold;
   font-size: medium;
-  margin: 0 0 10px 0;
+  margin: 15px 0 15px 0;
 }
 
 .button_difficulty {
-  background: #FFFFFF;
-  margin: 0 5px 0 5px;
+  background: var(--cardColor);
+  padding: 4px 8px 4px 8px;
+}
+
+.button_difficulty:hover {
+  background: var(--backgroundColor);
 }
 
 .scrollable-div {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(5, 52px);
+  grid-template-rows: repeat(3, auto);
   gap: 5px;
-  max-height: 200px;
-  width: fit-content;
+  max-height: 150px;
   overflow: auto;
+  margin-bottom: 50px;
 }
 
 .save-button:disabled {
-  color: darkgray;
-  background: lightgray;
+  color: var(--backgroundColor);
+  background: var(--cardColor);
   pointer-events: none;
 }
 
@@ -121,34 +159,35 @@ input[type=text] {
   font-family: sans-serif;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #751AE5;
+  border-bottom: 1px solid var(--borderColor);;
   width: 100%;
   margin-bottom: 5px;
+  color: var(--textColor);
 }
 
 .warning {
-  color: orangered;
+  color: var(--warningColor);
   text-align: center;
 }
 
 .center {
   text-align: center;
-  color: #751AE5;
+  color: var(--titleColor);
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: orangered;
+  color: var(--warningColor);
   opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: orangered;
+  color: var(--warningColor);
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-  color: orangered;
+  color: var(--warningColor);
 }
 
 .warning-border {
-color: orangered;
+color: var(--warningColor);
 }

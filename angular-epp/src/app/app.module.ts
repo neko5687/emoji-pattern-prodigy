@@ -15,6 +15,8 @@ import { RequestInterceptor } from './request.interceptor';
 import { MatrixcreationComponent } from './matrixcreation/matrixcreation.component';
 import { SignupComponent } from './signup/signup.component';
 import { HighscoreComponent } from './highscore/highscore.component';
+import {ModeToggleModule} from "./mode-toggle/mode-toggle.module";
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { HighscoreComponent } from './highscore/highscore.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModeToggleModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }],
   bootstrap: [AppComponent]

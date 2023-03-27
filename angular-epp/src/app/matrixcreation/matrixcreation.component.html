@@ -1,35 +1,44 @@
+<h1 class="main-title">Create a <span class="bold">Pattern</span></h1>
 <div class="main-container">
   <div class="creation-container">
-    <div class="creation-title">Title: <input type="text" placeholder="Add descriptive title." [(ngModel)]="title"></div>
+
     <div class="card-container">
       <div class="matrix-container">
         <div *ngFor="let emoji of emojis; let i = index">
-          <button class="creation-item" [style.border]="this.index == i ? '1px solid #751AE5' : 'none'"
+          <button class="creation-item" [style.border]="this.index == i ? '1px solid darkgrey' : 'none'"
                   (click)="this.index = i"> {{emoji}}
           </button>
         </div>
       </div>
       <div class="emojis-count-container">
-        <div class="warning" *ngIf="count !== 0"> Choose from the list below! {{count}} emojis left.</div>
+        <div class="warning" *ngIf="count !== 0"> Choose from the list below! <strong>{{count}}</strong> emojis left.
+        </div>
         <div class="center" *ngIf="count === 0"> ✅ Matrix complete!</div>
       </div>
+    </div>
+    <div class="creation-title">Title: <input type="text" placeholder="Add descriptive title." [(ngModel)]="title">
     </div>
     <div class="creation-hint">Hint:
       <input type="text" placeholder="Add hint." [(ngModel)]="hint">
     </div>
     <div class="creation-difficulty" [class.warning-border]="!hasDifficulty()">Difficulty:
-      <button class="button_difficulty" [style.border]="this.difficulty == 1 ? '1px solid #751AE5' : 'none'" (click)="this.difficulty = 1">{{chili}}️</button>
-      <button class="button_difficulty" [style.border]="this.difficulty == 2 ? '1px solid #751AE5' : 'none'"(click)="this.difficulty = 2">{{chili}}{{chili}}</button>
-      <button class="button_difficulty" [style.border]="this.difficulty == 3 ? '1px solid #751AE5' : 'none'"(click)="this.difficulty = 3">{{chili}}{{chili}}{{chili}}</button>
+      <button class="button_difficulty" [style.border]="this.difficulty == 1 ? '1px solid darkgrey' : 'none'"
+              (click)="this.difficulty = 1">{{chili}}️
+      </button>
+      <button class="button_difficulty" [style.border]="this.difficulty == 2 ? '1px solid darkgrey' : 'none'"
+              (click)="this.difficulty = 2">{{chili}}{{chili}}</button>
+      <button class="button_difficulty" [style.border]="this.difficulty == 3 ? '1px solid darkgrey' : 'none'"
+              (click)="this.difficulty = 3">{{chili}}{{chili}}{{chili}}</button>
     </div>
-    <button class="save-button" [disabled]="!isValidInput()" (click)="saveMatrix()">Save Matrix</button>
-    <div *ngIf="success"> Your Matrix was saved!</div>
+    <button class="save-button" [disabled]="!isValidInput()||success" (click)="saveMatrix()">Save Matrix</button>
+    <div class="center-text" *ngIf="success"> Your Matrix was saved!</div>
   </div>
 </div>
 <div class="possible-input-container">
-  <div class="possible-emojis-container" *ngIf="!success" class="possible-input scrollable-div">
+  <div class="possible-input-title" *ngIf="!success">👇 Choose emojis to create a pattern.</div>
+  <div class="possible-emojis-container possible-input scrollable-div" *ngIf="!success">
     <div *ngFor="let emoji of possibleInput">
-      <button class="possible-input-button" (click)= addAndCount(emoji)>{{emoji}}</button>
+      <button class="possible-input-button" (click)=addAndCount(emoji)>{{emoji}}</button>
     </div>
   </div>
 </div>

@@ -1,26 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --backgroundColor_light: #F4F4F4;
+  --backgroundColor_dark: #232323;
+  --headerTextColor_light: #FFFFFF;
+  --headerTextColor_dark: lightgrey;
+  --titleColor_light: #9E6BF5;
+  --titleColor_dark: lightgrey;
+  --textColor_light: #000000;
+  --textColor_dark: #F4F4F4;
+  --menuColor_light: #751AE5;
+  --menuColor_dark: #D9D9D9;
+  --cardColor_light: #FFFFFF;
+  --cardColor_dark: #313131;
+  --borderColor_light: lightgrey;
+  --borderColor_dark: #676767;
+  --accentColor_light: #751AE5;
+  --accentColor_dark: #132D1A;
+  --secondaryAccentColor_light: #9E6BF5;
+  --secondaryAccentColor_dark: #0F1125;
+  --tertiaryAccentColor_light: #0D37FC;
+  --tertiaryAccentColor_dark: #052B10;
+  --warningColor_light: orangered;
+  --warningColor_dark: orangered;
+  --arrow-circle-light: "../../assets/arrow-circle-light.svg";
+  --arrow-circle-dark: "../../assets/arrow-circle-dark.svg";
+}
+
+body.light {
+  --backgroundColor: var(--backgroundColor_light);
+  --headerTextColor: var(--headerTextColor_light);
+  --textColor: var(--textColor_light);
+  --titleColor: var(--titleColor_light);
+  --menuColor: var(--menuColor_light);
+  --cardColor: var(--cardColor_light);
+  --borderColor: var(--borderColor_light);
+  --accentColor: var(--accentColor_light);
+  --secondaryAccentColor: var(--secondaryAccentColor_light);
+  --tertiaryAccentColor: var(--tertiaryAccentColor_light);
+  --warningColor: var(--warningColor_light);
+  --placeholder-arrow: url("/assets/arrow-circle-light.svg");
+  --question-mark-box: url("/assets/questionmark-box-light.svg");
+}
+
+body.dark {
+  --backgroundColor: var(--backgroundColor_dark);
+  --headerTextColor: var(--headerTextColor_dark);
+  --textColor: var(--textColor_dark);
+  --titleColor: var(--titleColor_dark);
+  --menuColor: var(--menuColor_dark);
+  --cardColor: var(--cardColor_dark);
+  --borderColor: var(--borderColor_dark);
+  --accentColor: var(--accentColor_dark);
+  --secondaryAccentColor: var(--secondaryAccentColor_dark);
+  --tertiaryAccentColor: var(--tertiaryAccentColor_dark);
+  --warningColor: var(--warningColor_dark);
+  --placeholder-arrow: url("/assets/arrow-circle-dark.svg");
+  --question-mark-box: url("/assets/questionmark-box-dark.svg");
+
+}
+
+hr {
+  border: 1px solid var(--borderColor);
+}
+
 body {
   margin: 0;
 }
 
 body {
-  background-color: #f4f4f4;
+  background-color: var(--backgroundColor);
 }
 
 button {
-  background: linear-gradient(235.49deg, #751AE5 50.02%, #9E6BF5 80.4%, #0D37FC 220.54%);
+  background: linear-gradient(235.49deg, var(--accentColor) 50.02%, var(--secondaryAccentColor) 80.4%, var(--tertiaryAccentColor) 220.54%);
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
 }
 
 button:hover {
-  background: linear-gradient(55.49deg, #751AE5 50.02%, #9E6BF5 80.4%, #0D37FC 220.54%);
+  background: linear-gradient(55.49deg, var(--accentColor) 50.02%, var(--secondaryAccentColor) 80.4%, var(--tertiaryAccentColor) 220.54%);
 }
 
 button:active {
