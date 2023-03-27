@@ -12,9 +12,8 @@
 .main-title {
   font-family: sans-serif;
   text-align: center;
-
   font-weight: lighter;
-  color: #751AE5;
+  color: var(--titleColor);
 }
 
 .bold {
@@ -30,7 +29,7 @@
 }
 
 .portrait {
-  background: #FFFFFF;
+  background: var(--cardColor);
   margin: auto;
   height: 100px;
   width: 100px;
@@ -40,9 +39,8 @@
 
 .name {
   white-space: nowrap;
-  color: #751AE5;
+  color: var(--menuColor);
   font-weight: 300;
-
   margin: 0 auto;
   padding-top: 20px;
 }
@@ -50,10 +48,11 @@
 .spirit-animal {
   margin: 0 auto;
   padding-bottom: 20px;
+  color: var(--titleColor);
 }
 
 .attribute {
-  color: #751AE5;
+  color: var(--textColor);
   margin: 0 auto;
   padding-bottom: 20px;
   width: 65%;
@@ -68,11 +67,15 @@
   width: 30px;
 }
 
+.filter-gray{
+  filter: invert(42%) sepia(4%) saturate(26%) hue-rotate(3deg) brightness(92%) contrast(83%);
+}
+
 .title {
   font-family: sans-serif;
   text-align: center;
   font-size: large;
-  color: #751AE5;
+  color: var(--titleColor);
   padding-top: 80px;
 }
 
@@ -88,5 +91,5 @@
   font-size: 18px;
   line-height: 22px;
   text-align: justify;
-  color: #000000;
+  color: var(--textColor);
 }

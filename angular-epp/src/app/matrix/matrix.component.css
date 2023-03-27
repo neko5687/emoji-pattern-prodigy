@@ -1,20 +1,73 @@
+body, a, div, span {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+hr {
+  margin: 0;
+}
+
+.center-text {
+  text-align: center;
+}
+
+
+.main-title {
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: lighter;
+  color: var(--titleColor);
+}
+
+.h1UnderLoginName {
+  margin-top: 0;
+}
+
+.bold {
+  font-weight: 900;
+}
+
+.username {
+  color: var(--titleColor);
+  display: flex;
+  justify-content: end;
+  margin: 5px 7px 0 0;
+}
+
 .main-container {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.matrix-id-container {
+  display: flex;
+  justify-content: space-between;
+  width: 282px;
+  margin-top: 20px;
+}
+
+.matrix-id-title {
+  color: var(--titleColor);
+  font-weight: bold;
+}
+
+.matrix-id-name {
+  color: var(--titleColor);
+  font-style: italic;
 }
 
 .card-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: fit-content;
+  width: 262px;
   border-width: 1px;
   border-style: solid;
-  border-color: #751AE5;
+  border-color: var(--borderColor);
   padding: 10px;
-  margin-top: 150px;
+  margin-top: 10px;
   border-radius: 10px;
-  background: #FFFFFF;
+  background: var(--cardColor);
+  color: var(--textColor);
 }
 
 .matrix-container {
@@ -34,6 +87,14 @@
   margin-bottom: 10px;
 }
 
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 292px;
+  margin-top: 10px;
+
+}
+
 .matrix-item {
   display: flex;
   justify-content: center;
@@ -41,25 +102,60 @@
   font-size: 40px;
 }
 
+.placeholder-item {
+  width: 30px;
+  height: 30px;
+  background-image: var(--placeholder-arrow);
+}
+
+.question-mark-item {
+  width: 30px;
+  height: 30px;
+  background-image: var(--question-mark-box);
+  background-size: contain;
+}
+
 .possible-input {
-  display: flex;
+  display: grid;
   justify-content: center;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(3, auto);
+  row-gap: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.container-possible-input {
+  width: 100%;
+  min-height:90px;
 }
 
 .possible-input-button {
-  background: #FFFFFF;
+  background: var(--backgroundColor);
+  margin: 0 2px 0 2px;
 }
 
 .possible-input-button:hover {
-  background-color: #f4f4f4;
+  background-color: var(--cardColor);
 }
 
 .possible-input-button:active {
   transform: translateY(2px);
 }
 
+.voting-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .vote-button {
-  background: #FFFFFF;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--titleColor);
+  background: transparent;
+  color: var(--titleColor);
+  padding: 2px 8px 2px 8px;
+  margin: 0 5px 0 5px;
 }
 
 .vote-button:hover {
@@ -70,9 +166,42 @@
   transform: translateY(2px);
 }
 
+.back-button {
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--titleColor);
+  background: transparent;
+  color: var(--titleColor);
+  padding: 2px 4px 2px 4px;
+  margin: 0 5px 0 5px;
+  width: 65px;
+
+}
+
+.hint-button {
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--titleColor);
+  background: transparent;
+  color: var(--titleColor);
+  padding: 2px 4px 2px 4px;
+  margin: 0 5px 0 5px;
+  width: 65px;
+}
+
+.hint {
+  color: var(--textColor);
+  font-weight: bold;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 .timer {
   display: flex;
   justify-content: center;
+  font-weight: bolder;
+  font-size: larger;
 }
 
 .solution {
