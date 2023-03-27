@@ -5,7 +5,16 @@
 </div>
 <h1 class="main-title h1UnderSort">Choose your <span class="bold">Challenge</span></h1>
 <div class="cards-grid">
-  <div class="card-container" *ngFor="let matrix of matrices">
+<div *ngFor="let matrix of matrices">
+  <div class="matrix-id-container">
+    <div class="matrix-id-title">
+      {{matrix.title}}
+    </div>
+    <div class="matrix-id-name">
+      by {{matrix.creatorName}}
+    </div>
+  </div>
+  <div class="card-container" >
     <div class="matrix-container">
       <div class="matrix-item" *ngFor="let emoji of matrix.matrix; let i = index">
         <div *ngIf="i < 3">{{emoji}}</div>
@@ -18,8 +27,8 @@
       <span>❤️ {{matrix.vote}}</span><span>00:15</span><span>{{matrix.difficulty}}</span>
     </div>
     <div>
-      <button [routerLink]="'/matrices/' + matrix.id" class="card-button">{{matrix.title}}</button>
+      <button [routerLink]="'/matrices/' + matrix.id" class="card-button">Challenge accepted</button>
     </div>
-
+  </div>
   </div>
 </div>

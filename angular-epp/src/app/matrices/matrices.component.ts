@@ -8,6 +8,7 @@ interface MatrixDTO {
   vote: number,
   difficulty: number,
   createdAt: string,
+  creatorName: string
 }
 
 interface Matrix {
@@ -17,6 +18,7 @@ interface Matrix {
   vote: number,
   difficulty: string,
   createdAt: string,
+  creatorName: string
 }
 
 
@@ -28,7 +30,6 @@ interface Matrix {
 export class MatricesComponent implements OnInit {
   matrices: Matrix[] = [];
   sortMode: "ascending" | "descending" = "ascending";
-
 
 
   constructor(private http: HttpClient) {
@@ -49,6 +50,7 @@ export class MatricesComponent implements OnInit {
       vote: matrixDto.vote,
       difficulty: "🌶️".repeat(matrixDto.difficulty),
       createdAt: matrixDto.createdAt,
+      creatorName: matrixDto.creatorName
     };
     return matrix;
   }

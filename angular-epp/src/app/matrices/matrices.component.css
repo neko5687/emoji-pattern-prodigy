@@ -38,7 +38,7 @@
   grid-template-rows: repeat(5, 1fr);
   border-spacing: 0 20px;
   padding: 10px;
-  width: fit-content;
+  width: 200px;
 }
 
 .matrix-item {
@@ -99,4 +99,24 @@
   font-style: normal;
   font-weight: 600;
   color: var(--menuColor);
+}
+.matrix-id-container {
+  display: flex;
+  justify-content: space-between;
+  width: 228px;
+  margin-top: 20px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.matrix-id-title {
+  color: var(--titleColor);
+  font-weight: bold;
+}
+
+.matrix-id-name {
+  color: var(--titleColor);
+  font-style: italic;
+  font-size: 12px;
+  align-self: flex-end;
 }
