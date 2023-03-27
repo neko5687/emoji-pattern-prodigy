@@ -61,9 +61,9 @@ public class MatrixController {
     @PostMapping("/api/solved")
     public void savePoints(@RequestBody SolvedDTO solvedDTO) {
         MatrixUser user = matrixUserRepository.findByName(solvedDTO.getUserName());
-        user.setPoints(user.getPoints() + solvedDTO.getPoints());
         if (!user.getSolvedMatrices().contains(matrixRepository.findById((long) solvedDTO.getMatrixId()).get())) {
             user.getSolvedMatrices().add(matrixRepository.findById((long) solvedDTO.getMatrixId()).get());
+            user.setPoints(user.getPoints() + solvedDTO.getPoints());
         }
         matrixUserRepository.save(user);
     }

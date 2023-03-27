@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient, HttpParams} from "@angular/common/http";
 
@@ -107,6 +107,19 @@ export class MatrixComponent implements OnInit {
     );
   }
 
+  @HostListener('window:beforeunload', ['$event'])
+  onBeforeUnload() {
+    if (this.isSolving == true) {
+      let payload: SolvedDTO = {
+        userName: sessionStorage.getItem("userName"),
+        points: 0,
+        matrixId: this.matrixId
+      }
+      this.http.post('http://localhost:8080/api/solved', payload).subscribe();
+    }
+  }
+
+
   convertDTOtoMatrix(matrixDto: MatrixDTO): Matrix {
     const matrix: Matrix = {
       id: matrixDto.id,
@@ -131,7 +144,6 @@ export class MatrixComponent implements OnInit {
     this.getPossibleInput();
     this.startTimer()
     this.isSolving = true;
-
   }
 
   getPossibleInput() {
