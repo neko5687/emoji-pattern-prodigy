@@ -1,5 +1,5 @@
 <div *ngIf=" userName != null && userName.length != 0" class="username">
-  <span>User: {{userName}} | Points: {{userPoints}}</span>
+  <span>User: {{userName}} | Score: {{userPoints}}</span>
 </div>
 <h1 class="main-title">Hall of <span class="bold">Fame</span></h1>
 <div class="list" [class.current-user] = "user.userName == userName" *ngFor="let user of users">
