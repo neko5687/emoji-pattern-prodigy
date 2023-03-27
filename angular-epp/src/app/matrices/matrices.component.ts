@@ -30,6 +30,7 @@ interface Matrix {
 export class MatricesComponent implements OnInit {
   matrices: Matrix[] = [];
   sortMode: "ascending" | "descending" = "ascending";
+  sortModeDif: "ascending" | "descending" = "ascending";
   userName: string | null = "";
   userPoints: string | null = "";
   solvedMatrices: number[] = [];
@@ -95,8 +96,8 @@ export class MatricesComponent implements OnInit {
   }
 
   sortByDifficulty() {
-    this.sortMode = (this.sortMode === "ascending") ? "descending" : "ascending";
-    if (this.sortMode === "ascending") {
+    this.sortModeDif = (this.sortModeDif === "ascending") ? "descending" : "ascending";
+    if (this.sortModeDif === "ascending") {
       this.matrices = this.sortByDifficultyTopDown(this.matrices);
     } else {
       this.matrices = this.sortByDifficultyDownTop(this.matrices);
