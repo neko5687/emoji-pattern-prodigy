@@ -7,7 +7,7 @@
              name="username" [(ngModel)]="model.username" #username="ngModel" required/>
       <div class="div-min-hight">
         <div class="not-validated" *ngIf="!isValidUsername()">Please enter a valid Username!<br> Only characters,
-          numbers and . _ - are allowed.
+          numbers and . _ - are allowed. <br>Max. 10 characters
         </div>
         <div *ngIf="isValidUsername()">✅</div>
       </div>

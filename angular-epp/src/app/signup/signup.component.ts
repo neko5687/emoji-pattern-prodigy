@@ -59,7 +59,7 @@ export class SignupComponent {
   }
 
   isValidUsername(): boolean {
-    if (this.model.username.length === 0) {
+    if (this.model.username.length === 0 || this.model.username.length >10) {
       return false;
     }
     const allowedChars = /^[a-zA-Z0-9._-]*$/;
