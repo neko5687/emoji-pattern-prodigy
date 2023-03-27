@@ -76,6 +76,11 @@
   width: 100%;
 }
 
+.card-button:disabled {
+  pointer-events: none;
+  background: var(--borderColor_light);
+}
+
 .sort-button {
   width: auto;
   color: var(--textColor);
@@ -92,6 +97,7 @@
 .sort-button:active {
   transform: translateY(2px);
 }
+
 .sort-by {
   margin-top: -39px;
   margin-left: 15px;
@@ -100,6 +106,7 @@
   font-weight: 600;
   color: var(--menuColor);
 }
+
 .matrix-id-container {
   display: flex;
   justify-content: space-between;
@@ -122,6 +129,15 @@
   font-size: 12px;
   align-self: flex-end;
 }
+
 .username {
   margin-top: -18px;
+}
+
+.solved {
+  width: 228px;
+  margin-top: 5px;
+  padding-left: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--titleColor);
 }

@@ -32,6 +32,7 @@ export class MatricesComponent implements OnInit {
   sortMode: "ascending" | "descending" = "ascending";
   userName: string | null = "";
   userPoints: string | null = "";
+  solvedMatrices: number[] = [];
 
 
   constructor(private http: HttpClient) {
@@ -45,6 +46,11 @@ export class MatricesComponent implements OnInit {
     if (sessionStorage.getItem("token") != null && sessionStorage.getItem("token")?.length != 0){
       this.userName = sessionStorage.getItem("userName");
       this.userPoints = sessionStorage.getItem("points");
+      this.http.get<number[]>('http://localhost:8080/api/solvedmatrices/' + this.userName).subscribe(
+        result => {
+          this.solvedMatrices = result;
+        }
+      );
     }
   }
 

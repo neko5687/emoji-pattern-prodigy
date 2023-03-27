@@ -30,8 +30,9 @@
       <span>❤️ {{matrix.vote}}</span><span>00:15</span><span>{{matrix.difficulty}}</span>
     </div>
     <div>
-      <button [routerLink]="'/matrices/' + matrix.id" class="card-button">Challenge accepted</button>
+      <button [routerLink]="'/matrices/' + matrix.id" class="card-button"[disabled]="solvedMatrices.includes(matrix.id)">Accept challenge</button>
     </div>
   </div>
+  <div class="solved" *ngIf="solvedMatrices.includes(matrix.id)">Already solved</div>
   </div>
 </div>
