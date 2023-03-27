@@ -61,7 +61,7 @@ export class MatrixcreationComponent implements OnInit {
   }
 
   isValidInput(): boolean {
-    return this.title.length != 0 && this.difficulty != 0 && this.hint.length != 0 && !this.emojis.includes("?");
+    return this.title.length != 0 && this.title.length<14 && this.difficulty != 0 && this.hint.length != 0 && !this.emojis.includes("?");
   }
 
   emojiCounter() {
