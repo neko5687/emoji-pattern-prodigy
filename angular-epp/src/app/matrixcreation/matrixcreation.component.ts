@@ -34,12 +34,17 @@ export class MatrixcreationComponent implements OnInit {
   }
   success: boolean = false;
   count: number = 25;
-
+  userName: string | null = "";
+  userPoints: string | null = "";
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
   }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem("token") != null && sessionStorage.getItem("token")?.length != 0) {
+      this.userName = sessionStorage.getItem("userName");
+      this.userPoints = sessionStorage.getItem("points");
+    }
   }
 
   addEmojiToMatrix(emoji: string) {

@@ -40,7 +40,9 @@ export class AppComponent {
       this.http.post<any>('http://localhost:8080/logout', payload).subscribe()
       sessionStorage.clear();
       this.isLoggedIn = false;
-      this.router.navigate(['/matrices']);
+      this.router.navigate(['/matrices']).then(() => {
+        window.location.reload();
+      });
     }
   }
 }

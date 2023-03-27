@@ -30,6 +30,8 @@ interface Matrix {
 export class MatricesComponent implements OnInit {
   matrices: Matrix[] = [];
   sortMode: "ascending" | "descending" = "ascending";
+  userName: string | null = "";
+  userPoints: string | null = "";
 
 
   constructor(private http: HttpClient) {
@@ -40,6 +42,10 @@ export class MatricesComponent implements OnInit {
       .subscribe(result => {
         this.matrices = result.map(dto => this.convertDTOtoMatrix(dto))
       });
+    if (sessionStorage.getItem("token") != null && sessionStorage.getItem("token")?.length != 0){
+      this.userName = sessionStorage.getItem("userName");
+      this.userPoints = sessionStorage.getItem("points");
+    }
   }
 
   convertDTOtoMatrix(matrixDto: MatrixDTO): Matrix {

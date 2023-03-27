@@ -1,5 +1,7 @@
+<div *ngIf=" userName != null && userName.length != 0" class="username">
+  <span>User: {{userName}} | Score: {{userPoints}}</span>
+</div>
 <h1 class="main-title">Meet the <span class="bold">Team</span></h1>
-
 <div class="card-container">
   <div class="card">
     <div class="portrait">
@@ -36,7 +38,8 @@
       <h2 class="name">RUBBER DUCK</h2>
       <p class="spirit-animal">the duck</p>
       <p class="attribute">patient, always has an open ear for the team</p>
-      <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging"><img class="logo filter-gray" src="assets/github.svg" alt="github Logo"></a>
+      <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging"><img class="logo filter-gray"
+                                                                         src="assets/github.svg" alt="github Logo"></a>
     </div>
   </div>
 </div>

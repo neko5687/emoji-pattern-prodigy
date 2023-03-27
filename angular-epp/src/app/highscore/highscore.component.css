@@ -22,3 +22,8 @@
   font-weight: bolder;
   color: var(--textColor);
 }
+
+.current-user {
+  color: var(--accentColor_light);
+  font-weight: bold;
+}

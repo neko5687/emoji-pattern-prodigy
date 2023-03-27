@@ -3,6 +3,9 @@
   <button class="sort-button" (click)="sortByVote()">❤️ ↑↓</button>
   <button class="sort-button"  (click)="sortByDifficulty()">🌶️ ↑↓</button>
 </div>
+<div *ngIf=" userName != null && userName.length != 0" class="username">
+  <span>User: {{userName}} | Score: {{userPoints}}</span>
+</div>
 <h1 class="main-title h1UnderSort">Choose your <span class="bold">Challenge</span></h1>
 <div class="cards-grid">
 <div *ngFor="let matrix of matrices">
