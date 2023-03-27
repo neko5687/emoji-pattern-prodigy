@@ -3,6 +3,7 @@
 </div>
 <h1 class="main-title h1UnderSort">Find the <span class="bold">Pattern</span></h1>
 <div class="main-container">
+  <div>
   <div class="matrix-id-container">
     <div class="matrix-id-title">
       {{matrix.title}}
@@ -12,7 +13,6 @@
     </div>
   </div>
   <div class="card-container">
-
     <div class="matrix-container">
       <div *ngFor="let emoji of matrix.matrix; let i = index">
         <div class="matrix-item" *ngIf="isSolving">
@@ -62,4 +62,5 @@
   <div class="hint">
     <div *ngIf="hintVisible">{{matrix.hint}}</div>
   </div>
+</div>
 </div>
