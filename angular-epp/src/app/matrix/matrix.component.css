@@ -26,13 +26,6 @@ hr {
   font-weight: 900;
 }
 
-.username {
-  color: var(--titleColor);
-  display: flex;
-  justify-content: end;
-  margin: 5px 7px 0 0;
-}
-
 .main-container {
   display: flex;
   align-items: center;

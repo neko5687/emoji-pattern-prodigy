@@ -13,6 +13,8 @@ interface User {
 })
 export class HighscoreComponent implements OnInit {
   users: User[] = [];
+  userName: string | null = "";
+  userPoints: string | null = "";
 
   constructor(private http: HttpClient) {
   }
@@ -23,6 +25,10 @@ export class HighscoreComponent implements OnInit {
         this.users.sort((first, second) => second.points - first.points)
       }
     );
+    if (sessionStorage.getItem("token") != null && sessionStorage.getItem("token")?.length != 0) {
+      this.userName = sessionStorage.getItem("userName");
+      this.userPoints = sessionStorage.getItem("points");
+    }
   }
 
 

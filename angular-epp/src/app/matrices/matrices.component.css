@@ -122,3 +122,6 @@
   font-size: 12px;
   align-self: flex-end;
 }
+.username {
+  margin-top: -18px;
+}

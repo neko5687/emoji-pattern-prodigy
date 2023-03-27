@@ -91,3 +91,11 @@ button:hover {
 button:active {
   transform: translateY(2px);
 }
+
+.username {
+  color: var(--titleColor);
+  display: flex;
+  justify-content: end;
+  margin: 5px 7px 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
