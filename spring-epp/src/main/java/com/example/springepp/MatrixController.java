@@ -84,7 +84,9 @@ public class MatrixController {
         MatrixUser matrixUser = matrixUserRepository.findByName(matrixCreationDTO.getCreatorName());
         Matrix matrix = new Matrix(matrixCreationDTO.getMatrix(), matrixCreationDTO.getTitle(), matrixUser,
                 matrixCreationDTO.getDifficulty(), matrixCreationDTO.getHint());
+        if(matrix.getMatrix().length()==25){
         matrixRepository.save(matrix);
+        }
     }
 
     @GetMapping("api/highscore")
