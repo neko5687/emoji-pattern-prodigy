@@ -84,8 +84,9 @@ public class MatrixController {
         MatrixUser matrixUser = matrixUserRepository.findByName(matrixCreationDTO.getCreatorName());
         Matrix matrix = new Matrix(matrixCreationDTO.getMatrix(), matrixCreationDTO.getTitle(), matrixUser,
                 matrixCreationDTO.getDifficulty(), matrixCreationDTO.getHint());
-        if(matrix.getMatrix().length()==25){
-        matrixRepository.save(matrix);
+        String[] matrixSplit = matrix.getMatrix().split(",");
+        if (matrixSplit.length == 25 && !matrix.getMatrix().contains("?")) {
+            matrixRepository.save(matrix);
         }
     }
 
