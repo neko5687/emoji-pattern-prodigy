@@ -40,7 +40,7 @@ public class MatrixController {
     @GetMapping("/api/matrices/{id}")
     public MatrixDTO readMatrix(@PathVariable long id) {
         Optional<Matrix> optionalMatrix = this.matrixRepository.findById(id);
-        MatrixDTO response = new MatrixDTO();
+        MatrixDTO response;
         if (optionalMatrix.isPresent()) {
             Matrix matrix = optionalMatrix.get();
             response = new MatrixDTO(matrix.getMatrix(), matrix.getId(), matrix.getTitle(), matrix.getCreatedAt(),
