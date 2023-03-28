@@ -58,5 +58,10 @@ export class AppComponent implements OnInit{
     navLink.addEventListener('click', () => {
       navLink.classList.toggle('hide');
     });
+    window.addEventListener('click', (event) => {
+      if (!navLink.contains(event.target as Node) && !hamburger.contains(event.target as Node)) {
+        navLink.classList.add('hide');
+      }
+    });
   }
 }
