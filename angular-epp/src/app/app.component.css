@@ -109,3 +109,79 @@ a:hover {
 .placeholder {
   width: 84px;
 }
+
+
+.nav {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+
+  font-weight: bold;
+}
+
+.hamburger {
+  padding: 10px 10px 0 0;
+  cursor: pointer;
+}
+
+.hamburger-helper {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.hamburger .line {
+  display: block;
+  width: 30px;
+  height: 3px;
+  margin-bottom: 7px;
+  background-color: var(--menuColor);
+}
+
+.nav__link {
+  position: fixed;
+  width: 94%;
+  top: 5rem;
+  left: 18px;
+  background-color: var(--backgroundColor);
+}
+
+.nav__link a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.nav__link a:hover {
+  background-color: var(--backgroundColor);
+}
+
+.hide {
+  display: none;
+}
+
+@media screen and (min-width: 763px) {
+  .nav__link {
+    display: block;
+    position: static;
+    width: auto;
+    margin-right: 20px;
+    background: none;
+  }
+
+  .nav__link a {
+    display: inline-block;
+    padding: 15px 20px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .lockout-button {
+    display: flex;
+    justify-content: center;
+  }
+}
+

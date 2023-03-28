@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import { Mode } from "./mode-toggle/mode-toggle.model";
@@ -9,7 +9,7 @@ import { ModeToggleService } from "./mode-toggle/mode-toggle.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'angular-epp';
   isLoggedIn: boolean;
 
@@ -44,5 +44,19 @@ export class AppComponent {
         window.location.reload();
       });
     }
+  }
+
+  ngOnInit(): void {
+
+    const hamburger = document.querySelector('.hamburger') as HTMLElement;
+    const navLink = document.querySelector('.nav__link') as HTMLElement;
+
+    hamburger.addEventListener('click', () => {
+      navLink.classList.toggle('hide');
+    });
+
+    navLink.addEventListener('click', () => {
+      navLink.classList.toggle('hide');
+    });
   }
 }

@@ -9,6 +9,34 @@
   <p class="tagline">Think outside the emoji box! 😉</p>
 </div>
 
+<header>
+  <div class="hamburger-helper">
+    <div class="hamburger">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+  </div>
+
+  <nav class="nav">
+
+
+    <div class="nav__link hide">
+      <a routerLink="matrices">Main</a>
+      <a routerLink="rules">Rules</a>
+      <a routerLink="matrix-creation">Create</a>
+      <a routerLink="highscore">Highscore</a>
+      <a routerLink="algorithmic">Algorithmic thinking</a>
+      <a routerLink="about">About</a>
+
+        <button *ngIf="!isLoggedIn" routerLink="login">Login</button>
+        <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+
+
+    </div>
+  </nav>
+</header>
+<!--
 <div class="menu-container">
   <div class="placeholder">
   </div>
@@ -27,6 +55,6 @@
     <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
   </div>
 </div>
-
+--->
 <router-outlet></router-outlet>
 
