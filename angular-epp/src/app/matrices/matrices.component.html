@@ -1,8 +1,17 @@
-<div class = "sort-by">
-  <div >Sort by</div>
-  <button class="sort-button" (click)="sortByVote()">❤️ ↑↓</button>
-  <button class="sort-button"  (click)="sortByDifficulty()">🌶️ ↑↓</button>
+<div class="sort-by">
+  <div>Sort by</div>
+  <button class="sort-button" (click)="sortByVote()">
+    ❤️
+    <span *ngIf="sortMode==='ascending' && sortByVoteTopDown">↑</span>
+    <span *ngIf="sortMode=== 'descending' && sortByVoteDownTop">↓</span>
+  </button>
+  <button class="sort-button" (click)="sortByDifficulty()">
+    🌶️
+    <span *ngIf="sortModeDif==='ascending' && sortByDifficultyTopDown">↑</span>
+    <span *ngIf="sortModeDif=== 'descending' && sortByDifficultyDownTop">↓</span>
+  </button>
 </div>
+
 <div *ngIf=" userName != null && userName.length != 0" class="username">
   <span>User: {{userName}} | Score: {{userPoints}}</span>
 </div>
