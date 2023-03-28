@@ -38,9 +38,36 @@
 
 ### Final product
 <img class="r-stretch" src="FinalProduct.png">
+
 ---vert---
 ## Our Learnings
 ![Our Journey](journey.png)
+---vert---
+
+## interesting code-snippet
+
+<link rel="stylesheet" href="plugin/highlight/monokai.css">
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+  Reveal.initialize({
+    plugins: [ RevealHighlight ]
+  });
+</script>
+<section>
+<pre><code data-trim data-noescape data-line-numbers="1-2|3|4-11">
+@HostListener('window:beforeunload', ['$event'])
+onBeforeUnload() {
+    if (this.isSolving == true) {
+        let payload: SolvedDTO = {
+            userName: sessionStorage.getItem("userName"),
+            points: 0,
+            matrixId: this.matrixId
+            }
+        this.http.post('http://localhost:8080/api/solved', payload).subscribe();
+    }
+}
+</code> </pre>
+</section>
 ---slide---
 
 # Thank you!
