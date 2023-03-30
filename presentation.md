@@ -2,10 +2,6 @@
 ## A project by Team Emojiteers
 
 ---slide---
-## Showcase
-### Come in and find out!
-
----slide---
 ## Join our Journey
 ![Our Journey](journey.png)
 
@@ -15,6 +11,13 @@
 ### Lars and Carl need help!
 <img class="r-stretch" src="larsAndCarl.png">
 
+---slide---
+## Showcase
+### Come in and find out!
+
+---slide---
+## Join our Journey
+![Our Journey](journey.png)
 
 ---vert---
 <img class="r-stretch" src="header2.png">
