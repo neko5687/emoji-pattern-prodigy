@@ -20,9 +20,9 @@ public class TestDataController {
 
     @GetMapping("/api/testdata")
     public @ResponseBody String createTestData() {
-        MatrixUser creator = matrixUserRepository.findByName("Admin");
+        MatrixUser creator = matrixUserRepository.findByName("Emojiteers");
         matrixRepository.save(new Matrix(
-                "🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋", "Hearts and Butterflies", creator, 1, "Which one has wings?"));
+                "🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋,❤️,🦋", "Spring Love", creator, 1, "Which one has wings?"));
 
         matrixRepository.save(new Matrix(
                 "🦕,🐘,🦒,🐘,🦒,🐘,🦕,🦒,🐘,🦒,🐘,🦒,🦕,🐘,🦒,🐘,🦒,🐘,🦕,🦒,🐘,🦒,🐘,🦒,🦕", "Animal Parade", creator, 1, "Who is slowest?"));
