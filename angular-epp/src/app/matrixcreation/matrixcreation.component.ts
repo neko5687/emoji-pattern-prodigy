@@ -8,6 +8,7 @@ interface MatrixCreationDTO {
   difficulty: number;
   creatorName: string | null;
   hint: string;
+  hiddenItem: number
 }
 
 @Component({
@@ -20,8 +21,9 @@ export class MatrixcreationComponent implements OnInit {
   emojis: string[] = ["?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?"];
   possibleInput: string[] = ['🐵', '🐶', '🐺', '🦊', '🐱', '🐯', '🦁', '🐮', '🐷', '🐗', '🐭', '🐹', '🐰', '🐻', '🐨', '🐼', '🦘', '🦡', '🐾', '🦃', '🐔', '🐦', '🐤', '🐣', '🐥', '🦆', '🦢', '🦉', '🦚', '🦜', '🐸', '🐊', '🐢', '🦎', '🐍', '🐲', '🐉', '🦕', '🦖', '🦈', '🐬', '🐳', '🐋', '🐟', '🐠', '🐡', '🦐', '🦞', '🦀', '🐚', '🐌', '🦋', '🐛', '🐜', '🐝', '🐞', '🦟', '🦗'];
   hint: string = "";
-  chili: string = "🌶️";
 
+  hiddenItem?: number;
+  chili: string = "🌶️";
   index: number = 0;
   difficulty: number = 0;
   title: string = "";
@@ -30,7 +32,8 @@ export class MatrixcreationComponent implements OnInit {
     matrix: "",
     difficulty: 0,
     creatorName: "",
-    hint: ""
+    hint: "",
+    hiddenItem: -1
   }
   success: boolean = false;
   count: number = 25;
@@ -60,13 +63,15 @@ export class MatrixcreationComponent implements OnInit {
       matrix: matrix,
       difficulty: this.difficulty,
       creatorName: userName,
-      hint: this.hint
+      hint: this.hint,
+      hiddenItem: this.hiddenItem?(this.hiddenItem-1):-1
     }
     this.http.post('http://localhost:8080/api/createMatrix', this.payload).subscribe(() => this.success = true);
   }
 
   isValidInput(): boolean {
-    return this.title.length != 0 && this.title.length<14 && this.difficulty != 0 && this.hint.length != 0 && !this.emojis.includes("?");
+    return this.title.length != 0 && this.title.length<14 && this.difficulty != 0 && this.hint.length != 0 &&
+      !this.emojis.includes("?") && this.hiddenItem != null && this.hiddenItem> 0 && this.hiddenItem<26;
   }
 
   emojiCounter() {

@@ -13,12 +13,14 @@ public class MatrixCreationDTO {
     private String creatorName;
     private String hint;
 
-    public MatrixCreationDTO(String title, String matrix, int difficulty, String creatorName, String hint) {
+    private int hiddenItem;
+    public MatrixCreationDTO(String title, String matrix, int difficulty, String creatorName, String hint, int hiddenItem) {
         this.title = title;
         this.matrix = matrix;
         this.difficulty = difficulty;
         this.creatorName = creatorName;
         this.hint = hint;
+        this.hiddenItem = hiddenItem;
     }
 }
 

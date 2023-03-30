@@ -16,8 +16,8 @@
     <div class="matrix-container">
       <div *ngFor="let emoji of matrix.matrix; let i = index">
         <div class="matrix-item" *ngIf="isSolving">
-          <span *ngIf="i < 24">{{emoji}}</span>
-          <span *ngIf="i === 24">{{matrixSolution}}</span>
+          <span *ngIf=" i != (matrix.hiddenItem)">{{emoji}}</span>
+          <span *ngIf="i === (matrix.hiddenItem)">{{matrixSolution}}</span>
         </div>
         <div class="matrix-item" *ngIf="!isSolving">
           <span *ngIf="i < 3">{{emoji}}</span>

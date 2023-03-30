@@ -11,6 +11,7 @@ interface MatrixDTO {
   createdAt: string,
   creatorName: string,
   hint: string
+  hiddenItem: number;
 }
 
 interface Matrix {
@@ -22,6 +23,7 @@ interface Matrix {
   createdAt: string,
   creatorName: string,
   hint: string
+  hiddenItem: number
 }
 
 interface MatrixDTOVote {
@@ -64,7 +66,8 @@ export class MatrixComponent implements OnInit {
     difficulty: '',
     createdAt: '',
     creatorName: '',
-    hint: ''
+    hint: '',
+    hiddenItem: 0
   };
   intervalId: any;
   remainingSeconds: any = 15;
@@ -129,7 +132,8 @@ export class MatrixComponent implements OnInit {
       difficulty: "🌶️".repeat(matrixDto.difficulty),
       createdAt: matrixDto.createdAt,
       creatorName: matrixDto.creatorName,
-      hint: matrixDto.hint
+      hint: matrixDto.hint,
+      hiddenItem: matrixDto.hiddenItem
     };
     return matrix;
   }
@@ -153,7 +157,7 @@ export class MatrixComponent implements OnInit {
 
   endSolving() {
     this.stopTimer();
-    if (this.matrixSolution === this.matrix.matrix[24]) {
+    if (this.matrixSolution === this.matrix.matrix[this.matrix.hiddenItem]) {
       this.isCorrect = true;
     }
     if (!this.isCorrect || this.remainingSeconds == 0) {

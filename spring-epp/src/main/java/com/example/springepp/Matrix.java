@@ -25,7 +25,9 @@ public class Matrix {
     private Instant createdAt;
     private String hint;
 
-    public Matrix(String matrix, String title, MatrixUser creator, int difficulty,String hint) {
+    private int hiddenItem;
+
+    public Matrix(String matrix, String title, MatrixUser creator, int difficulty,String hint, int hiddenItem) {
         this.matrix = matrix;
         this.title = title;
         this.creator = creator;
@@ -33,5 +35,6 @@ public class Matrix {
         this.difficulty = difficulty;
         this.createdAt = Instant.now();
         this.hint=hint;
+        this.hiddenItem = hiddenItem;
     }
 }
