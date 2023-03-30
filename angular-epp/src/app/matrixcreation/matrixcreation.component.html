@@ -9,6 +9,7 @@
       <div class="matrix-container">
         <div *ngFor="let emoji of emojis; let i = index">
           <button class="creation-item" [style.border]="this.index == i ? '1px solid darkgrey' : 'none'"
+                  [style.opacity]="this.hiddenItem == (i+1) ? 0.2 : 1"
                   (click)="this.index = i"> {{emoji}}
           </button>
         </div>
@@ -23,6 +24,9 @@
     </div>
     <div class="creation-hint">Hint:
       <input type="text" placeholder="Add hint." [(ngModel)]="hint">
+    </div>
+    <div class="creation-hidden-item">Hidden Item:
+      <input type="number" step="1" placeholder="Add a number from 1 to 25." oninput="validity.valid||(value='')" [(ngModel)]="hiddenItem">
     </div>
     <div class="creation-difficulty" [class.warning-border]="!hasDifficulty()">Difficulty:
       <button class="button_difficulty" [style.border]="this.difficulty == 1 ? '1px solid darkgrey' : 'none'"

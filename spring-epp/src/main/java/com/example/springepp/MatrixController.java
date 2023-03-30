@@ -85,7 +85,7 @@ public class MatrixController {
         Matrix matrix = new Matrix(matrixCreationDTO.getMatrix(), matrixCreationDTO.getTitle(), matrixUser,
                 matrixCreationDTO.getDifficulty(), matrixCreationDTO.getHint(),matrixCreationDTO.getHiddenItem());
         String[] matrixSplit = matrix.getMatrix().split(",");
-        if (matrixSplit.length == 25 && !matrix.getMatrix().contains("?")) {
+        if (matrixSplit.length == 25 && !matrix.getMatrix().contains("?")  && matrix.getHiddenItem()>=0 && matrix.getHiddenItem()<=24) {
             matrixRepository.save(matrix);
         }
     }
