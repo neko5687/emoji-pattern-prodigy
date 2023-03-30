@@ -1,6 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient, HttpParams} from "@angular/common/http";
+
 
 interface MatrixDTO {
   id: number,
@@ -47,7 +48,7 @@ interface MatrixUserDTO {
   templateUrl: './matrix.component.html',
   styleUrls: ['./matrix.component.css']
 })
-export class MatrixComponent implements OnInit {
+export class MatrixComponent implements OnInit, OnDestroy {
   matrixId: number = 0;
 
   matrixSolution: string = "?";
@@ -121,7 +122,6 @@ export class MatrixComponent implements OnInit {
       this.http.post('http://localhost:8080/api/solved', payload).subscribe();
     }
   }
-
 
   convertDTOtoMatrix(matrixDto: MatrixDTO): Matrix {
     const matrix: Matrix = {
@@ -215,5 +215,16 @@ export class MatrixComponent implements OnInit {
     this.votingPossible = false;
     let payload: MatrixDTOVote = {id: this.matrix.id, vote: (this.matrix.vote - 1)}
     this.http.post<MatrixDTOVote>('http://localhost:8080/api/matrices/' + this.matrixId, payload).subscribe(() => location.reload());
+  }
+
+  ngOnDestroy(): void {
+    if (this.isSolving == true) {
+      let payload: SolvedDTO = {
+        userName: sessionStorage.getItem("userName"),
+        points: 0,
+        matrixId: this.matrixId
+      }
+      this.http.post('http://localhost:8080/api/solved', payload).subscribe();
+    }
   }
 }
